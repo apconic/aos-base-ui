@@ -1,0 +1,34 @@
+{
+  "name": "apconic-base-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1"
+  },
+  "repository": {
+    "type": "git",
+//    "url": "https://github.com/apconicsoftware/base-components.git" //change here
+  },
+  "peerDependencies": {
+    "react": "^15.2.1",
+    "react-simple-di": "^1.2.0",
+    "shallowequal": "^0.2.2",
+    "lodash": "^4.13.1",
+    "material-ui": "0.15.4",
+    "validator": "^5.4.0",
+    "react-virtualized": "^7.12.2",
+    "moment": "^2.14.1"
+  }
+}

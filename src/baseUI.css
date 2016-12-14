@@ -1,0 +1,9 @@
+.md-chip {
+  all: initial;
+  background-color: rgb(87, 87, 87);
+  display: inline-block;
+  border-radius: 32px;
+  height: 32px;
+  margin-left: '20px';
+  margin-right: '20px';
+}
