@@ -1,5 +1,5 @@
 {
-  "name": "apconic-base-components",
+  "name": "aos-base-ui",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-//    "url": "https://github.com/apconicsoftware/base-components.git" //change here
+    "url": "https://github.com/apconic/aos-base-ui.git"
   },
   "peerDependencies": {
     "react": "^15.2.1",
