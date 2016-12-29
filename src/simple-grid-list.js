@@ -1,8 +1,13 @@
 import React from 'react';
 import { GridList } from 'material-ui/GridList';
 
-const SimpleGridList = (props) => (
-  <GridList {...props}>
+const SimpleGridList = props => (
+  <GridList
+    cellHeight={props.cellHeight}
+    cols={props.cols}
+    padding={props.padding}
+    style={props.style}
+  >
     {props.children}
   </GridList>
 );

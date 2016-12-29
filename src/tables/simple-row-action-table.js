@@ -8,7 +8,7 @@ import { Table,
 import ActionButton from '../action-button';
 import TableRowHeader from './table-row-header';
 import * as Colors from 'material-ui/styles/colors';
-import { split } from 'lodash';
+import { split, filter } from 'lodash';
 
 export default class SimpleRowActionTable extends React.Component {
   constructor(props) {
@@ -23,26 +23,34 @@ export default class SimpleRowActionTable extends React.Component {
     return fields.map((field) => {
       const tokens = split(field, '.', 3);
       let value = row[tokens[0]];
+      index += 1;
       for (let i = 1; i < tokens.length; i++) {
         value = value ? value[tokens[i]] : '';
       }
-      return <TableRowColumn key={index++}>{value}</TableRowColumn>;
+      return <TableRowColumn key={index}>{value}</TableRowColumn>;
     });
   }
 
   renderActions(row, actions) {
     if (!actions || actions.length === 0) return '';
+    const actionsToShow = filter(actions, (action) => {
+      if (action.show) {
+        return action.show(row);
+      }
+      return true;
+    });
     let index = 0;
     return (
       <TableRowColumn>
         <div className="row">
-          {actions.map((action) =>
+          {actionsToShow.map((action) =>
             (
             <ActionButton
               key={index++}
               type={action.type}
               onTouchTap={action.onTouchTap(row)}
               style={{ margin: '0.5em' }}
+              icon={action.icon}
             />
             )
           )}

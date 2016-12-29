@@ -77,6 +77,7 @@ export default class Notification extends React.Component {
     const targetOrigin = { horizontal: 'right', vertical: 'top' };
     const { notification, open, anchorEl } = this.props;
     const style = this.getNotificationStyle();
+    const secondaryText = notification.text ? notification.text : '';
     return (
       <Popover
         open={open}
@@ -96,7 +97,7 @@ export default class Notification extends React.Component {
             />
           }
           primaryText={notification.type}
-          secondaryText={notification.text}
+          secondaryText={secondaryText}
           secondaryTextLines={2}
         />
       </Popover>
