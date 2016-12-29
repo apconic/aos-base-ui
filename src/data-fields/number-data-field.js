@@ -7,31 +7,32 @@ export default class NumberDataField extends Field {
   constructor(props) {
     super(props);
     this.state = {
-      errorText: this.validateText(props.value),
+      errorText: this.validateText(props.isRequired, props.value),
     };
     this.onTextChange = this.onTextChange.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
+    const { isRequired } = newProps;
     this.setState({
-      errorText: this.validateText(newProps.value, newProps),
+      errorText: this.validateText(isRequired, newProps.value),
     });
   }
 
   onTextChange(event) {
-    const { onChange, decimalPlaces } = this.props;
+    const { onChange, isRequired, decimalPlaces } = this.props;
     event.preventDefault();
     const textFieldValue = this.refs.numberField.getValue();
-    const errorText = this.validateText(textFieldValue);
+    const errorText = this.validateText(isRequired, textFieldValue);
     this.setState({
       errorText,
     });
     onChange(this.props.docField, floor(textFieldValue, decimalPlaces));
   }
 
-  validateText(text, props) {
+  validateText(isRequired, text) {
     try {
-      this.checkMandatory(text, props);
+      this.checkMandatory(text);
       this.checkValidation(text, 'isDecimal');
       this.checkRange(text);
     } catch (error) {

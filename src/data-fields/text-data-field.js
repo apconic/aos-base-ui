@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import { trim } from 'lodash';
+import { trim, isNull, isUndefined } from 'lodash';
 import Field from './field';
 
 export default class TextDataField extends Field {
@@ -11,8 +11,12 @@ export default class TextDataField extends Field {
   }
 
   onBlur(event) {
-    const { onChange, docField } = this.props;
+    const { onChange, docField, onBlurred } = this.props;
     const textFieldValue = trim(event.target.value);
+    if (onBlurred) {
+      onBlurred(docField, textFieldValue);
+      return;
+    }
     onChange(docField, textFieldValue);
   }
 
@@ -44,11 +48,13 @@ export default class TextDataField extends Field {
             isRequired, // eslint-disable-line no-unused-vars
             validatorType, // eslint-disable-line no-unused-vars
             onInvalid, // eslint-disable-line no-unused-vars
+            onBlurred, // eslint-disable-line no-unused-vars
             ...other } = this.props;
     const errorText = this.validateText(value);
-    return (
+    const textFieldValue = isNull(value) || isUndefined(value) ? '' : value;
+      return (
       <TextField
-        value={value || ''}
+        value={textFieldValue}
         onChange={this.onTextChange}
         onBlur={this.onBlur}
         fullWidth
@@ -70,4 +76,5 @@ TextDataField.propTypes = {
   validatorType: React.PropTypes.string,
   onInvalid: React.PropTypes.func,
   validationRegex: React.PropTypes.string,
+  onBlurred: React.PropTypes.func,
 };

@@ -13,7 +13,7 @@ export default class PasswordDataField extends Field {
 
   componentWillReceiveProps(newProps) {
     const { value } = newProps;
-    this.setState({ errorText: this.validateText(value, newProps) });
+    this.setState({ errorText: this.validateText(value) });
   }
 
   onTextChange(event) {
@@ -24,9 +24,8 @@ export default class PasswordDataField extends Field {
     onChange(this.props.docField, textFieldValue);
   }
 
-  validateText(text, newProps) {
-    const props = newProps || this.props;
-    const { isRequired } = props;
+  validateText(text) {
+    const { isRequired } = this.props;
     if (isRequired !== false &&
         (isNull(text) || isUndefined(text) || isEmpty(text.trim()))) {
       return DisplayMessages.requiredText;

@@ -93,6 +93,7 @@ export default class Shortlist extends React.Component {
       shortlist.splice(index + 1, 0, selectedShortlistItem);
       const { onChange, docField } = this.props;
       onChange(docField, shortlist);
+      this.forceUpdate();
     }
   }
 
@@ -104,6 +105,7 @@ export default class Shortlist extends React.Component {
       shortlist.splice(index - 1, 0, selectedShortlistItem);
       const { onChange, docField } = this.props;
       onChange(docField, shortlist);
+      this.forceUpdate();
     }
   }
 

@@ -3,6 +3,7 @@ import { findIndex } from 'lodash';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import ActionButton from './action-button';
+import { blue300 } from 'material-ui/styles/colors';
 
 export default class MutableGridList extends React.Component {
   constructor(props) {
@@ -22,13 +23,14 @@ export default class MutableGridList extends React.Component {
     let index = 0;
     return (
       values.map((val) => {
+        index += 1;
         if (type === 'TEXT') {
           return (
             <SimpleGridTile
-              key={index++}
+              key={index}
               title={val}
               titlePosition="top"
-              titleBackground="rgba(96, 96, 96, 0.7)"
+              titleBackground={blue300}
               actionIcon={<ActionButton
                 type="ICON"
                 icon="indeterminate_check_box"
@@ -37,17 +39,20 @@ export default class MutableGridList extends React.Component {
             />
           );
         }
-        return (<SimpleGridTile
-          key={index++}
-          title={val[gridDisplayKey]}
-          titlePosition="top"
-          titleBackground="rgba(96, 96, 96, 0.7)"
-          actionIcon={<ActionButton
-            type="ICON"
-            icon="indeterminate_check_box"
-            onTouchTap={this.onGridTileAction(val[gridDisplayKey])}
-          />}
-        />);
+        return (
+          <SimpleGridTile
+            key={index}
+            title={val[gridDisplayKey]}
+            titlePosition="top"
+            titleBackground={blue300}
+            actionIcon={
+              <ActionButton
+                type="ICON"
+                icon="indeterminate_check_box"
+                onTouchTap={this.onGridTileAction(val[gridDisplayKey])}
+              />
+            }
+          />);
       })
     );
   }

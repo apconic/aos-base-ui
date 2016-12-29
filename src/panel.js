@@ -32,7 +32,7 @@ class Panel extends Component {
 }
 
 Panel.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.any,
   children: PropTypes.any,
   subtitle: PropTypes.string,
   style: PropTypes.object,

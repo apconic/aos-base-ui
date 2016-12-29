@@ -4,7 +4,11 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 class PanelWithHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { style: { background: 'rgba(200, 210, 220, 0.5)' }, zDepth: 1 };
+    this.state = {
+      style: { background: 'rgba(200, 210, 220, 0.5)' },
+      titleStyle: { fontSize: '16pt' },
+      zDepth: 1,
+    };
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
@@ -20,11 +24,12 @@ class PanelWithHeader extends React.Component {
   render() {
     const style = this.state.style;
     const zDepth = this.state.zDepth;
-    const header = (this.props.title || this.props.subtitle) ? 
+    const header = (this.props.title || this.props.subtitle) ?
         (<CardHeader
           title={this.props.title}
           subtitle={this.props.subtitle}
           style={style}
+          titleStyle={this.state.titleStyle}
         />) : '';
 
     return (

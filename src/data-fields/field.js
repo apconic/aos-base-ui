@@ -23,9 +23,8 @@ export default class Field extends React.Component {
     }
   }
 
-  checkMandatory(text, newProps) {
-    const props = newProps || this.props;
-    const { isRequired } = props;
+  checkMandatory(text) {
+    const { isRequired } = this.props;
     const isTextBlank = this.checkBlank(text);
     if (isRequired && isTextBlank) {
       throw new Error(DisplayMessages.requiredText);
