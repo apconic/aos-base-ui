@@ -1,20 +1,20 @@
 {
   "name": "aos-base-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile",
+    "build": "babel -d lib/ src/",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.11.1"
   },
   "repository": {
