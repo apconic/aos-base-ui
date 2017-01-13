@@ -1,6 +1,6 @@
 {
   "name": "aos-base-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "url": "https://github.com/apconic/aos-base-ui.git"
   },
   "peerDependencies": {
-    "react": "^15.2.1",
+    "react": "^15.4.2",
     "react-simple-di": "^1.2.0",
     "shallowequal": "^0.2.2",
     "lodash": "^4.13.1",

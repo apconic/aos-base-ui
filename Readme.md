@@ -1,8 +1,6 @@
 # Apconic base UI based on Material UI
 
-A Higher Order Component using react and redux to keep form state.
-Several higher order components are also created. This package only supports Material UI (https://github.com/callemall/material-ui).
-
+Some helpful higher order componens for material-ui
 ## Getting Started
 
 ** Coming Soon **
@@ -22,7 +20,6 @@ Tests are not provided with this package as of now. Will be added in the later v
 ## Built With
 
 * [MaterialUI](https://github.com/callemall/material-ui) - The web framework used
-* [Redux](http://redux.js.org//) - State manager
 
 ## Contributing
 
