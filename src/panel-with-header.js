@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { grey300 } from 'material-ui/styles/colors';
 
 class PanelWithHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: { background: 'rgba(200, 210, 220, 0.5)' },
+      style: { background: grey300 },
       titleStyle: { fontSize: '16pt' },
       zDepth: 1,
     };

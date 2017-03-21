@@ -119,13 +119,33 @@ export default class SimpleRowActionTable extends React.Component {
       displayRowCheckbox: false,
       height: height || '200px',
     };
+
+    const tableHeaderProps = {
+      displaySelectAll: false,
+      adjustForCheckbox: false,
+      enableSelectAll: false,
+    };
+
+    const tableProps = {
+      height: '60vh',
+      selectable: false,
+      multiSelectable: false,
+    };
+
+    const tableBodyProps = {
+      displayRowCheckbox: false,
+      stripedRows: true,
+      showRowHover: true,
+    };
+
+
     return (
-      <Table {...tableOptions}>
-        <TableHeader {...tableOptions}>
+      <Table {...tableProps}>
+        <TableHeader {...tableHeaderProps}>
           {this.renderTitle()}
           <TableRowHeader headers={headers} />
         </TableHeader>
-        <TableBody {...tableOptions}>
+        <TableBody {...tableBodyProps}>
           {
             this.renderRow()
           }

@@ -102,7 +102,6 @@ class ActionButton extends React.Component {
     const { type, tooltip, primary, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <FloatingActionButton
-        mini
         {...other}
       >
         <FontIcon className="material-icons">{icon}</FontIcon>
