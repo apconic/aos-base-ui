@@ -14,6 +14,7 @@ import PanelWithHeader from './panel-with-header';
 import Shortlist from './shortlist';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
+import withAuth from './composers/withAuth';
 
 export {
   SimpleRowActionTable,
@@ -31,4 +32,5 @@ export {
   Shortlist,
   SimpleGridList,
   SimpleGridTile,
+  withAuth,
 }
