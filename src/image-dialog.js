@@ -1,5 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
+import PropTypes from 'prop-types';
 import ActionButton from './action-button';
 
 const ImageDialog = ({ open, name, url, onClose }) => {
@@ -26,7 +27,6 @@ const ImageDialog = ({ open, name, url, onClose }) => {
   );
 };
 
-const { PropTypes } = React;
 ImageDialog.propTypes = {
   open: PropTypes.bool,
   url: PropTypes.string,

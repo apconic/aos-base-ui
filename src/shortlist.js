@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Panel from './panel';
 import { ListItem } from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import { isEmpty } from 'lodash';
 
-export default class Shortlist extends React.Component {
+export default class Shortlist extends Component {
   constructor(props) {
     super(props);
     const { list, value } = props;
@@ -217,12 +218,12 @@ export default class Shortlist extends React.Component {
 }
 
 Shortlist.propTypes = {
-  list: React.PropTypes.array,
-  displayName: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  value: React.PropTypes.any,
-  docField: React.PropTypes.string,
-  onChange: React.PropTypes.func.isRequired,
-  displayKey: React.PropTypes.string,
-  compareKey: React.PropTypes.string,
+  list: PropTypes.array,
+  displayName: PropTypes.string,
+  subtitle: PropTypes.string,
+  value: PropTypes.any,
+  docField: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  displayKey: PropTypes.string,
+  compareKey: PropTypes.string,
 };

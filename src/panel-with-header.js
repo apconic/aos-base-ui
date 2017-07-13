@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import { grey300 } from 'material-ui/styles/colors';
 
-class PanelWithHeader extends React.Component {
+class PanelWithHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,10 +51,10 @@ class PanelWithHeader extends React.Component {
 }
 
 PanelWithHeader.propTypes = {
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  children: React.PropTypes.node,
-  style: React.PropTypes.object,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  children: PropTypes.node,
+  style: PropTypes.object,
 };
 
 export default PanelWithHeader;

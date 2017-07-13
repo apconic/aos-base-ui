@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
+import PropTypes from 'prop-types';
 
-class ActionButton extends React.Component {
+class ActionButton extends Component {
   getIconButton() {
     const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
         <FontIcon className="material-icons">{icon}</FontIcon>
+      </IconButton>
+    );
+  }
+
+  getSvgIconButton() {
+    const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+    return (
+      <IconButton {...other}>
+        {icon}
       </IconButton>
     );
   }
@@ -112,6 +122,8 @@ class ActionButton extends React.Component {
   renderButton() {
     const { type } = this.props;
     switch (type) {
+      case 'SVG_ICON':
+        return this.getSvgIconButton();
       case 'ICON':
         return this.getIconButton();
       case 'ADD':
@@ -145,9 +157,9 @@ class ActionButton extends React.Component {
 }
 
 ActionButton.propTypes = {
-  type: React.PropTypes.string,
-  onClick: React.PropTypes.func,
-  icon: React.PropTypes.string,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  icon: PropTypes.string,
 };
 
 export default ActionButton;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Subheader from 'material-ui/Subheader';
 
 const BaseSubheader = (props) => (
@@ -8,7 +9,7 @@ const BaseSubheader = (props) => (
 );
 
 BaseSubheader.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default BaseSubheader;

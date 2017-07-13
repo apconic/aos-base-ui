@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { findIndex } from 'lodash';
+import PropTypes from 'prop-types';
+
 import DataField from './data-fields/data-field';
 import MutableGridList from './mutable-grid-list';
 import ActionButton from './action-button';
@@ -7,7 +9,7 @@ import BaseSubheader from './base-subheader';
 
 function isNullOrUndefined(x) { return !(x != null); }
 
-export default class Adder extends React.Component {
+export default class Adder extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedItem: null };
@@ -76,15 +78,15 @@ export default class Adder extends React.Component {
 }
 
 Adder.propTypes = {
-  initialItems: React.PropTypes.array,
-  value: React.PropTypes.array,
-  addAction: React.PropTypes.func,
-  tileAction: React.PropTypes.func,
-  displayName: React.PropTypes.string,
-  selectFilterFunction: React.PropTypes.func,
-  storageType: React.PropTypes.string,
-  gridDisplayKey: React.PropTypes.string,
-  valueKey: React.PropTypes.string,
-  selectDisplayConverter: React.PropTypes.func,
-  storeFunction: React.PropTypes.func,
+  initialItems: PropTypes.array,
+  value: PropTypes.array,
+  addAction: PropTypes.func,
+  tileAction: PropTypes.func,
+  displayName: PropTypes.string,
+  selectFilterFunction: PropTypes.func,
+  storageType: PropTypes.string,
+  gridDisplayKey: PropTypes.string,
+  valueKey: PropTypes.string,
+  selectDisplayConverter: PropTypes.func,
+  storeFunction: PropTypes.func,
 };

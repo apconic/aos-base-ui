@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Table,
   TableRow,
   TableHeader,
@@ -10,7 +11,7 @@ import * as Colors from 'material-ui/styles/colors';
 
 import { isArray } from 'lodash';
 
-export default class SimpleTable extends React.Component {
+export default class SimpleTable extends Component {
   constructor(props) {
     super(props);
     this.renderRowColumns = this.renderRowColumns.bind(this);
@@ -140,6 +141,6 @@ export default class SimpleTable extends React.Component {
 }
 
 SimpleTable.propTypes = {
-  data: React.PropTypes.any,
-  title: React.PropTypes.string,
+  data: PropTypes.any,
+  title: PropTypes.string,
 };

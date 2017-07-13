@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Popover from 'material-ui/Popover';
 import { ListItem } from 'material-ui/List';
 import FontIcon from 'material-ui/FontIcon';
 import * as Colors from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 
-export default class Notification extends React.Component {
+export default class Notification extends Component {
   constructor(props) {
     super(props);
     this.closePopover = this.closePopover.bind(this);
@@ -106,8 +107,8 @@ export default class Notification extends React.Component {
 }
 
 Notification.propTypes = {
-  open: React.PropTypes.bool,
-  anchorEl: React.PropTypes.any,
-  clearNotification: React.PropTypes.func,
-  notification: React.PropTypes.object,
+  open: PropTypes.bool,
+  anchorEl: PropTypes.any,
+  clearNotification: PropTypes.func,
+  notification: PropTypes.object,
 };

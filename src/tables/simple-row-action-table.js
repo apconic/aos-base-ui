@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Table,
   TableRow,
   TableHeader,
@@ -10,7 +11,7 @@ import TableRowHeader from './table-row-header';
 import * as Colors from 'material-ui/styles/colors';
 import { split, filter } from 'lodash';
 
-export default class SimpleRowActionTable extends React.Component {
+export default class SimpleRowActionTable extends Component {
   constructor(props) {
     super(props);
     this.renderRowColumns = this.renderRowColumns.bind(this);
@@ -156,6 +157,6 @@ export default class SimpleRowActionTable extends React.Component {
 }
 
 SimpleRowActionTable.propTypes = {
-  data: React.PropTypes.object,
-  height: React.PropTypes.any,
+  data: PropTypes.object,
+  height: PropTypes.any,
 };

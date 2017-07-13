@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 
-export default class AppHeader extends React.Component {
+export default class AppHeader extends Component {
   render() {
     const { toggleNavbar, ...other } = this.props;
     return (
@@ -15,5 +16,5 @@ export default class AppHeader extends React.Component {
 }
 
 AppHeader.propTypes = {
-  toggleNavbar: React.PropTypes.func,
+  toggleNavbar: PropTypes.func,
 };

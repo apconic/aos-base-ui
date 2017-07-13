@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableHeaderColumn, TableRow } from 'material-ui/Table';
 
 const TableRowHeader = (props) => {
@@ -16,10 +17,10 @@ const TableRowHeader = (props) => {
 };
 
 TableRowHeader.propTypes = {
-  headers: React.PropTypes.any,
-  colSpan: React.PropTypes.any,
-  style: React.PropTypes.object,
-  rowNumber: React.PropTypes.any,
+  headers: PropTypes.any,
+  colSpan: PropTypes.any,
+  style: PropTypes.object,
+  rowNumber: PropTypes.any,
 };
 
 export default TableRowHeader;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 
-const { Component, PropTypes } = React;
 class Panel extends Component {
   renderTitle() {
     const { title, subtitle } = this.props;

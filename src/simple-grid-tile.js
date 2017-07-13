@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GridTile } from 'material-ui/GridList';
 
 const SimpleGridTile = (props) => (
@@ -8,7 +9,7 @@ const SimpleGridTile = (props) => (
 );
 
 SimpleGridTile.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default SimpleGridTile;

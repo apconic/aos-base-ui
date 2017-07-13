@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { findIndex } from 'lodash';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import ActionButton from './action-button';
 import { blue300 } from 'material-ui/styles/colors';
 
-export default class MutableGridList extends React.Component {
+export default class MutableGridList extends Component {
   constructor(props) {
     super(props);
     this.onGridTileAction = this.onGridTileAction.bind(this);
@@ -68,8 +69,8 @@ export default class MutableGridList extends React.Component {
 }
 
 MutableGridList.propTypes = {
-  values: React.PropTypes.array,
-  action: React.PropTypes.func,
-  gridDisplayKey: React.PropTypes.string,
-  type: React.PropTypes.string,
+  values: PropTypes.array,
+  action: PropTypes.func,
+  gridDisplayKey: PropTypes.string,
+  type: PropTypes.string,
 };

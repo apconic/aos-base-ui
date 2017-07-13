@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GridList } from 'material-ui/GridList';
 
 const SimpleGridList = props => (
@@ -13,11 +14,11 @@ const SimpleGridList = props => (
 );
 
 SimpleGridList.propTypes = {
-  cellHeight: React.PropTypes.number,
-  children: React.PropTypes.node,
-  cols: React.PropTypes.number,
-  padding: React.PropTypes.number,
-  style: React.PropTypes.object,
+  cellHeight: PropTypes.number,
+  children: PropTypes.node,
+  cols: PropTypes.number,
+  padding: PropTypes.number,
+  style: PropTypes.object,
 };
 
 export default SimpleGridList;

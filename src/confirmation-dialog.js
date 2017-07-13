@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import PropTypes from 'prop-types';
 
-export default class ConfirmationDialog extends React.Component {
+export default class ConfirmationDialog extends Component {
   constructor(props) {
     super(props);
     this.handleOk = this.handleOk.bind(this);
@@ -54,10 +55,10 @@ export default class ConfirmationDialog extends React.Component {
 }
 
 ConfirmationDialog.propTypes = {
-  handleOk: React.PropTypes.func.isRequired,
-  handleCancel: React.PropTypes.func.isRequired,
-  content: React.PropTypes.string.isRequired,
-  open: React.PropTypes.bool.isRequired,
+  handleOk: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 ConfirmationDialog.defaultProps = { open: false };
