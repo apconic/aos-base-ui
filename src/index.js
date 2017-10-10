@@ -1,7 +1,6 @@
 import SimpleRowActionTable from './tables/simple-row-action-table';
 import SimpleTable from './/tables/simple-table';
 import ActionButton from './action-button';
-import Adder from './adder';
 import AppHeader from './app-header';
 import BaseSubheader from './base-subheader';
 import ConfirmationDialog from './confirmation-dialog';
@@ -20,7 +19,6 @@ export {
   SimpleRowActionTable,
   SimpleTable,
   ActionButton,
-  Adder,
   AppHeader,
   BaseSubheader,
   ConfirmationDialog,
