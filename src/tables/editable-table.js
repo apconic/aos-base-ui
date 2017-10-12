@@ -13,7 +13,7 @@ import TableRowHeader from './table-row-header';
 import * as Colors from 'material-ui/styles/colors';
 import { split, filter } from 'lodash';
 
-export default class RowActionTable extends Component {
+export default class EditTable extends Component {
   constructor(props) {
     super(props);
     this.renderRowColumns = this.renderRowColumns.bind(this);
@@ -166,7 +166,7 @@ export default class RowActionTable extends Component {
   }
 }
 
-RowActionTable.propTypes = {
+EditTable.propTypes = {
   data: PropTypes.object,
   height: PropTypes.any,
 };
