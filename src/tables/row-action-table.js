@@ -33,7 +33,7 @@ export default class RowActionTable extends Component {
       if (field.edit) {
         return <TableRowColumn key={index}> 
           <Toggle 
-            onToggle={field.onToggle}
+            onToggle={field.onToggle(row)}
             toggled={value}
           />
         </TableRowColumn>;
