@@ -1,4 +1,5 @@
 import SimpleRowActionTable from './tables/simple-row-action-table';
+import RowActionTable from './tables/row-action-table';
 import SimpleTable from './/tables/simple-table';
 import ActionButton from './action-button';
 import AppHeader from './app-header';
@@ -16,6 +17,7 @@ import SimpleGridTile from './simple-grid-tile';
 import withAuth from './composers/withAuth';
 
 export {
+  RowActionTable,
   SimpleRowActionTable,
   SimpleTable,
   ActionButton,
