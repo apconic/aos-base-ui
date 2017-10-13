@@ -30,10 +30,10 @@ export default class EditTable extends Component {
       for (let i = 1; i < tokens.length; i++) {
         value = value ? value[tokens[i]] : '';
       }
-      if (field.edit) {
+      if (field.edit && (typeof value) == 'boolean') {
         return <TableRowColumn key={index}> 
           <Toggle 
-            onToggle={field.onToggle(row)}
+            onToggle={field.onChange(row)}
             toggled={value}
           />
         </TableRowColumn>;
