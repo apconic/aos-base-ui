@@ -27,7 +27,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/apconic/aos-base-ui/tags). 
 
 ## Authors
 
@@ -35,10 +35,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **Suhail Ansari** - *Contributor*
 
 See also the list of [contributors](https://github.com/apconic/aos-base-ui/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
