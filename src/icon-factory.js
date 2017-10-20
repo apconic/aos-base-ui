@@ -1,35 +1,77 @@
 import React from 'react';
-import ActionHome from 'material-ui/svg-icons/action/home';
-import ActionPermDataSetting from 'material-ui/svg-icons/action/perm-data-setting';
-import SocialGroup from 'material-ui/svg-icons/social/group';
-import ActionDoneAll from 'material-ui/svg-icons/action/done-all';
-import HardwareBack from 'material-ui/svg-icons/hardware/keyboard-backspace';
-import MapsTruck from 'material-ui/svg-icons/maps/local-shipping';
-import Card from 'material-ui/svg-icons/action/credit-card';
-import Launch from 'material-ui/svg-icons/action/launch';
-import ActionReports from 'material-ui/svg-icons/action/assessment';
+import Home from 'material-ui-icons/Home';
+import PermDataSetting from 'material-ui-icons/PermDataSetting';
+import Group from 'material-ui-icons/Group';
+import DoneAll from 'material-ui-icons/DoneAll';
+import KeyboardBackspace from 'material-ui-icons/KeyboardBackspace';
+import LocalShipping from 'material-ui-icons/LocalShipping';
+import CreditCard from 'material-ui-icons/CreditCard';
+import Launch from 'material-ui-icons/Launch';
+import Assessment from 'material-ui-icons/Assessment';
 
 const IconFactory = {
   getIcon(icon) {
     switch (icon) {
+      // Legacy Material-UI 0.x
       case 'ActionHome':
-        return <ActionHome />;
+        return <Home />;
+      // Material-UI 1.x
+      case 'Home':
+        return <Home />;
+
+      // Legacy Material-UI 0.x
       case 'ActionPermDataSetting':
-        return <ActionPermDataSetting />;
+        return <PermDataSetting />;
+      // Material-UI 1.x
+      case 'PermDataSetting':
+        return <PermDataSetting />;
+
+      // Legacy Material-UI 0.x
       case 'SocialGroup':
-        return <SocialGroup />;
+        return <Group />;
+      // Material-UI 1.x
+      case 'Group':
+        return <Group />;
+
+      // Legacy Material-UI 0.x
       case 'ActionDoneAll':
-        return <ActionDoneAll />;
+        return <DoneAll />;
+      // Material-UI 1.x
+      case 'DoneAll':
+        return <DoneAll />;
+
+      // Legacy Material-UI 0.x
       case 'ActionBack':
-        return <HardwareBack />;
+        return <KeyboardBackspace />;
+      // Material-UI 1.x
+      case 'KeyboardBackspace':
+        return <KeyboardBackspace />;
+
+      // Legacy Material-UI 0.x
       case 'MapsTruck':
-        return <MapsTruck />;
+        return <LocalShipping />;
+      // Material-UI 1.x
+      case 'LocalShipping':
+        return <LocalShipping />;
+
+      // Material-UI 0.x/1.x
       case 'Launch':
         return <Launch />;
+
+      // Legacy Material-UI 0.x
       case 'Card':
-        return <Card />;
+        return <CreditCard />;
+      // Material-UI 1.x
+      case 'CreditCard':
+        return <CreditCard />;
+
+      // Legacy Material-UI 0.x
       case 'Reports':
-        return <ActionReports />;
+        return <Assessment />;
+      // Material-UI 1.x
+      case 'Assessment':
+        return <Assessment />;
+
       default:
         return <div />;
     }

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import Button from 'material-ui/Button';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from 'material-ui/Dialog';
 import PropTypes from 'prop-types';
 
 export default class ConfirmationDialog extends Component {
@@ -27,28 +33,25 @@ export default class ConfirmationDialog extends Component {
         ...other }
        = this.props;
     const actions = [
-      <FlatButton
-        label="Cancel"
-        secondary
-        onTouchTap={this.handleCancel}
-      />,
-      <FlatButton
-        label="Ok"
-        primary
-        keyboardFocused
-        onTouchTap={this.handleOk}
-      />,
+      <Button
+        color="accent"
+        onClick={this.handleCancel}
+      >Cancel</Button>,
+      <Button
+        color="primary"
+        keyboardFocused /* Not documented by MUI, assuming this is an HTML attribute. */
+        onClick={this.handleOk}
+      >Ok</Button>,
     ];
     return (
       <Dialog
-        title="Confirmation"
-        actions={actions}
-        modal={false}
         open={open}
         onRequestClose={this.handleCancel}
         {...other}
       >
-        {content}
+        <DialogTitle>Confirmation</DialogTitle>
+        <DialogContent><DialogContentText>{content}</DialogContentText></DialogContent>
+        <DialogActions>{actions}</DialogActions>
       </Dialog>
     );
   }

@@ -1,5 +1,11 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText as DCT,
+  DialogActions
+} from 'material-ui/Dialog';
 import PropTypes from 'prop-types';
 import ActionButton from './action-button';
 
@@ -15,14 +21,13 @@ const ImageDialog = ({ open, name, url, onClose }) => {
   const contentStyle = { height: '80%', maxHeight: 'none' };
   return (
     <Dialog
-      title={name}
-      actions={actions}
       open={open}
       onRequestClose={onClose}
-      autoScrollBodyContent
-      contentStyle={contentStyle}
+      style={contentStyle}
     >
-      <img alt="Camera" src={url} height={350} width={500} />
+      <DialogTitle>{name}</DialogTitle>
+      <DialogContent><DCT><img alt="Camera" src={url} height={350} width={500} /></DCT></DialogContent>
+      <DialogActions>{actions}</DialogActions>
     </Dialog>
   );
 };

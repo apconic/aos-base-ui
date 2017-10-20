@@ -4,7 +4,7 @@ import { findIndex } from 'lodash';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import ActionButton from './action-button';
-import { blue300 } from 'material-ui/styles/colors';
+import { blue } from 'material-ui/colors';
 
 export default class MutableGridList extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class MutableGridList extends Component {
               key={index}
               title={val}
               titlePosition="top"
-              titleBackground={blue300}
+              titleBackground={blue[300]}
               actionIcon={<ActionButton
                 type="ICON"
                 icon="indeterminate_check_box"
@@ -45,7 +45,7 @@ export default class MutableGridList extends Component {
             key={index}
             title={val[gridDisplayKey]}
             titlePosition="top"
-            titleBackground={blue300}
+            titleBackground={blue[300]}
             actionIcon={
               <ActionButton
                 type="ICON"
