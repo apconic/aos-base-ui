@@ -1,35 +1,45 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FontIcon from 'material-ui/FontIcon';
+import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
 import PropTypes from 'prop-types';
+// material-ui icons.
+import ContentCopy from 'material-ui-icons/ContentCopy';
+import Videocam from 'material-ui-icons/Videocam';
+import Edit from 'material-ui-icons/Edit';
+import Delete from 'material-ui-icons/Delete';
+import Add from 'material-ui-icons/Add';
+import LocalOffer from 'material-ui-icons/LocalOffer';
+import List from 'material-ui-icons/List';
 
 class ActionButton extends Component {
   getIconButton() {
     const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">{icon}</FontIcon>
+        <Icon>{icon}</Icon>
       </IconButton>
     );
   }
 
-  getSvgIconButton() {
+  // Seems like this is legacy.
+  // Possible solution in material-ui-icons?
+  /* getSvgIconButton() {
     const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
         {icon}
       </IconButton>
     );
-  }
+  } */
 
   getCopyButton() {
     const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">content_copy</FontIcon>
+        <ContentCopy />
       </IconButton>
     );
   }
@@ -38,7 +48,7 @@ class ActionButton extends Component {
     const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">videocam</FontIcon>
+        <Videocam />
       </IconButton>
     );
   }
@@ -47,7 +57,7 @@ class ActionButton extends Component {
     const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">edit</FontIcon>
+        <Edit />
       </IconButton>
     );
   }
@@ -56,7 +66,7 @@ class ActionButton extends Component {
     const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">delete</FontIcon>
+        <Delete />
       </IconButton>
     );
   }
@@ -64,24 +74,18 @@ class ActionButton extends Component {
   getAddButton() {
     const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
-      <FloatingActionButton
-        mini
-        {...other}
-      >
-        <FontIcon className="material-icons">add</FontIcon>
-      </FloatingActionButton>
+      <Button dense fab color="primary" aria-label="add" {...other}>
+        <Add />
+      </Button>
     );
   }
 
   getRfidReadButton() {
     const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
-      <FloatingActionButton
-        mini
-        {...other}
-      >
-        <FontIcon className="material-icons">local_offer</FontIcon>
-      </FloatingActionButton>
+      <Button dense fab color="primary" aria-label="read-rfid-card" {...other}>
+        <LocalOffer />
+      </Button>
     );
   }
 
@@ -89,33 +93,31 @@ class ActionButton extends Component {
     const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">list</FontIcon>
+        <List />
       </IconButton>
     );
   }
 
   getFlatButton() {
-    const { type, tooltip, ...other } = this.props; // eslint-disable-line no-unused-vars
+    const { type, tooltip, children, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
-      <FlatButton {...other} />
+      <Button {...other}>{children}</Button>
     );
   }
 
   getRaisedButton() {
-    const { type, tooltip, ...other } = this.props; // eslint-disable-line no-unused-vars
+    const { type, tooltip, children, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
-      <RaisedButton {...other} />
+      <Button raised {...other}>{children}</Button>
     );
   }
 
   getFloatingButton() {
-    const { type, tooltip, primary, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+    const { type, tooltip, icon, color, ...other } = this.props; // eslint-disable-line no-unused-vars
     return (
-      <FloatingActionButton
-        {...other}
-      >
-        <FontIcon className="material-icons">{icon}</FontIcon>
-      </FloatingActionButton>
+      <Button fab color={color ? color : "primary"} {...other}>
+        <Icon>{icon}</Icon>
+      </Button>
     );
   }
 
