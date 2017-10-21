@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Popover from 'material-ui/Popover';
-import { ListItem } from 'material-ui/List';
-import FontIcon from 'material-ui/FontIcon';
-import * as Colors from 'material-ui/styles/colors';
+import { ListItem, ListItemText } from 'material-ui/List';
+import * as Colors from 'material-ui/colors';
 import Avatar from 'material-ui/Avatar';
 
 export default class Notification extends Component {
@@ -19,50 +18,30 @@ export default class Notification extends Component {
   getNotificationFontIcon(notificationType) {
     switch (notificationType) {
       case 'Success':
-        return (
-          <FontIcon className="material-icons" color="white">
-           check
-          </FontIcon>
-        );
+        return <Icon color="white">check</Icon>;
       case 'Error':
-        return (
-          <FontIcon className="material-icons" color="white">
-            clear
-          </FontIcon>
-        );
+        return <Icon color="white">clear</Icon>;
       case 'Info':
-        return (
-          <FontIcon className="material-icons" color="white">
-            info
-          </FontIcon>
-          );
+        return <Icon color="white">info</Icon>;
       case 'Warning':
-        return (
-          <FontIcon className="material-icons" color="white">
-            warning
-          </FontIcon>
-          );
+        return <Icon color="white">warning</Icon>;
       default:
-        return (
-          <FontIcon className="material-icons">
-            verified_user
-          </FontIcon>
-      );
+        return <Icon color="white">verified_user</Icon>;
     }
   }
 
   getAvatarColor(notificationType) {
     switch (notificationType) {
       case 'Success':
-        return Colors.lightGreen400;
+        return Colors.lightGreen[400];
       case 'Error':
-        return Colors.red500;
+        return Colors.red[500];
       case 'Info':
-        return Colors.blue500;
+        return Colors.blue[500];
       case 'Warning':
-        return Colors.yellow800;
+        return Colors.yellow[800];
       default:
-        return Colors.grey400;
+        return Colors.grey[400];
     }
   }
 
@@ -84,23 +63,20 @@ export default class Notification extends Component {
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={anchorOrigin}
-        targetOrigin={targetOrigin}
-        zDepth={2}
+        transformOrigin={targetOrigin}
+        style={{ zDepth: 2 }}
         onRequestClose={this.closePopover}
         style={style}
       >
-        <ListItem
-          disabled
-          leftAvatar={
-            <Avatar
-              icon={this.getNotificationFontIcon(notification.type)}
-              backgroundColor={this.getAvatarColor(notification.type)}
-            />
-          }
-          primaryText={notification.type}
-          secondaryText={secondaryText}
-          secondaryTextLines={2}
-        />
+        <ListItem>
+          <Avatar style={{ backgroundColor: this.getAvatarColor(notification.type) }}>
+            {this.getNotificationFontIcon(notification.type)}
+          </Avatar>
+          <ListItemText
+            primary={notification.type}
+            secondary={secondaryText}
+          />
+        </ListItem>
       </Popover>
     );
   }

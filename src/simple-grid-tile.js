@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GridTile } from 'material-ui/GridList';
+import { GridListTile } from 'material-ui/GridList';
 
 const SimpleGridTile = (props) => (
-  <GridTile {...props}>
+  <GridListTile {...props}>
     {props.children}
-  </GridTile>
+  </GridListTile>
 );
 
 SimpleGridTile.propTypes = {

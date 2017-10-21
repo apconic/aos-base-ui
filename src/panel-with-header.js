@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
-import { grey300 } from 'material-ui/styles/colors';
+import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import { grey } from 'material-ui/colors';
 
 class PanelWithHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: { background: grey300 },
+      style: { background: grey[300] },
       titleStyle: { fontSize: '16pt' },
       zDepth: 1,
     };
@@ -29,22 +29,22 @@ class PanelWithHeader extends Component {
     const header = (this.props.title || this.props.subtitle) ?
         (<CardHeader
           title={this.props.title}
-          subtitle={this.props.subtitle}
+          subheader={this.props.subtitle}
           style={style}
-          titleStyle={this.state.titleStyle}
         />) : '';
 
     return (
       <Card
         zDepth={zDepth}
+        raised
         style={this.props.style}
         onMouseOver={this.onMouseOver}
         onMouseLeave={this.onMouseLeave}
       >
         {header}
-        <CardText>
+        <CardContent>
           {this.props.children}
-        </CardText>
+        </CardContent>
       </Card>
     );
   }

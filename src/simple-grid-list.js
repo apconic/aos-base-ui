@@ -4,10 +4,8 @@ import { GridList } from 'material-ui/GridList';
 
 const SimpleGridList = props => (
   <GridList
-    cellHeight={props.cellHeight}
-    cols={props.cols}
-    padding={props.padding}
-    style={props.style}
+    cellHeight={props.cellHeight} cols={props.cols}
+    style={{ ...props.style, padding: props.padding }}
   >
     {props.children}
   </GridList>
