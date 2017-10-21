@@ -124,8 +124,8 @@ class ActionButton extends Component {
   renderButton() {
     const { type } = this.props;
     switch (type) {
-      case 'SVG_ICON':
-        return this.getSvgIconButton();
+/* case 'SVG_ICON':
+        return this.getSvgIconButton(); */
       case 'ICON':
         return this.getIconButton();
       case 'ADD':

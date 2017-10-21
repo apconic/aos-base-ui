@@ -4,6 +4,7 @@ import Popover from 'material-ui/Popover';
 import { ListItem, ListItemText } from 'material-ui/List';
 import * as Colors from 'material-ui/colors';
 import Avatar from 'material-ui/Avatar';
+import Icon from 'material-ui/Icon'
 
 export default class Notification extends Component {
   constructor(props) {

@@ -10,7 +10,7 @@ export default class AppHeader extends Component {
   render() {
     const { toggleNavbar, ...other } = this.props;
     return (
-      <AppBar {...other} ref="appBar">
+      <AppBar {...other}>
         <Toolbar>
           <IconButton style={{ marginLeft: -12, marginRight: 20 }} color="contrast" aria-label="Menu">
             <MenuIcon />
