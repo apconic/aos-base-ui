@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table,
+import Table, {
   TableRow,
-  TableHeader,
-  TableHeaderColumn,
-  TableRowColumn,
-  TableBody } from 'material-ui/Table';
+  TableHead,
+  TableCell,
+  TableBody
+} from 'material-ui/Table';
 import ActionButton from '../action-button';
 import * as Colors from 'material-ui/styles/colors';
 
@@ -43,14 +43,14 @@ export default class SimpleTable extends Component {
   renderRowColumns(row, fields) {
     let index = 0;
     return fields.map((field) => (
-      <TableRowColumn key={index++}>{row[field]}</TableRowColumn>
+      <TableCell key={index++}>{row[field]}</TableCell>
     ));
   }
 
   renderRow() {
     const { rows, fields } = this.props.data;
     return rows.map((row, index) => (
-      <TableRow key={index} >
+      <TableRow key={index}>
         {this.renderRowColumns(row, fields)}
       </TableRow>
     ));
@@ -74,7 +74,7 @@ export default class SimpleTable extends Component {
               <ActionButton
                 key={index++}
                 { ...action }
-                onTouchTap={this.onActionClick.bind(this, action)} // eslint-disable-line
+                onClick={this.onActionClick.bind(this, action)} // eslint-disable-line
                 style={{ margin: '0.5em' }}
                 disabled={disabled}
               />
@@ -89,9 +89,9 @@ export default class SimpleTable extends Component {
     const { headers } = this.props.data;
     return (
       <TableRow>
-        <TableHeaderColumn style={{ fontSize: 20 }} colSpan={headers.length}>
+        <TableCell style={{ fontSize: 20 }}>
           {this.renderTitleWithButton()}
-        </TableHeaderColumn>
+        </TableCell>
       </TableRow>
     );
   }
@@ -103,7 +103,7 @@ export default class SimpleTable extends Component {
       <TableRow>
         {
           headers.map((header) =>
-            (<TableHeaderColumn key={index++}>{header.val}</TableHeaderColumn>)
+            (<TableCell key={index++}>{header.val}</TableCell>)
           )
         }
       </TableRow>
@@ -126,10 +126,10 @@ export default class SimpleTable extends Component {
     };
     return (
       <Table {...tableOptions} onRowSelection={this.onRowSelection}>
-        <TableHeader {...tableOptions}>
+        <TableHead {...tableOptions}>
          {this.renderTitle()}
          {this.renderHeaders()}
-        </TableHeader>
+        </TableHead>
         <TableBody {...tableOptions}>
           {
             this.renderRow()

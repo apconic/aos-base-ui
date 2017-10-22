@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TableHeaderColumn, TableRow } from 'material-ui/Table';
+import { TableCell, TableRow } from 'material-ui/Table';
 
 const TableRowHeader = (props) => {
   const { headers, rowNumber, ...other } = props;
@@ -9,7 +9,7 @@ const TableRowHeader = (props) => {
     <TableRow>
       {
       headers.map((header) => (
-        <TableHeaderColumn {...other} key={index++}>{header.val}</TableHeaderColumn>)
+        <TableCell {...other} key={index++}>{header.val}</TableCell>)
       )
       }
     </TableRow>
