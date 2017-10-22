@@ -5,6 +5,7 @@ import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import ActionButton from './action-button';
 import { blue } from 'material-ui/colors';
+import { GridListTileBar } from 'material-ui/GridList'
 
 export default class MutableGridList extends Component {
   constructor(props) {
@@ -27,33 +28,38 @@ export default class MutableGridList extends Component {
         index += 1;
         if (type === 'TEXT') {
           return (
-            <SimpleGridTile
-              key={index}
-              title={val}
-              titlePosition="top"
-              titleBackground={blue[300]}
-              actionIcon={<ActionButton
-                type="ICON"
-                icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val)}
-              />}
-            />
+            <SimpleGridTile key={index}>
+              <GridListTileBar
+                title={val}
+                titlePosition="top"
+                style={{ background: blue[300] }}
+                actionIcon={
+                  <ActionButton
+                    type="ICON"
+                    icon="indeterminate_check_box"
+                    onClick={this.onGridTileAction(val)}
+                  />
+                }
+              />
+            </SimpleGridTile>
           );
         }
         return (
-          <SimpleGridTile
-            key={index}
-            title={val[gridDisplayKey]}
-            titlePosition="top"
-            titleBackground={blue[300]}
-            actionIcon={
-              <ActionButton
-                type="ICON"
-                icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val[gridDisplayKey])}
-              />
-            }
-          />);
+          <SimpleGridTile key={index}>
+            <GridListTileBar
+              title={val[gridDisplayKey]}
+              titlePosition="top"
+              style={{ background: blue[300] }}
+              actionIcon={
+                <ActionButton
+                  type="ICON"
+                  icon="indeterminate_check_box"
+                  onClick={this.onGridTileAction(val[gridDisplayKey])}
+                />
+              }
+            />
+          </SimpleGridTile>
+        );
       })
     );
   }

@@ -15,8 +15,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "material-ui": "1.0.0-beta.17",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "yarn-or-npm": "^2.0.4"
   },
   "repository": {

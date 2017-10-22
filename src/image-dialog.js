@@ -3,31 +3,20 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText as DCT,
   DialogActions
 } from 'material-ui/Dialog';
 import PropTypes from 'prop-types';
 import ActionButton from './action-button';
 
 const ImageDialog = ({ open, name, url, onClose }) => {
-  const actions = [
-    <ActionButton
-      label="Ok"
-      primary
-      onTouchTap={onClose}
-      type="RAISED"
-    />,
-  ];
   const contentStyle = { height: '80%', maxHeight: 'none' };
   return (
-    <Dialog
-      open={open}
-      onRequestClose={onClose}
-      style={contentStyle}
-    >
+    <Dialog open={open} onRequestClose={onClose} style={contentStyle}>
       <DialogTitle>{name}</DialogTitle>
-      <DialogContent><DCT><img alt="Camera" src={url} height={350} width={500} /></DCT></DialogContent>
-      <DialogActions>{actions}</DialogActions>
+      <DialogContent><img alt="Camera" src={url} height={350} width={500} /></DialogContent>
+      <DialogActions>
+        <ActionButton color="primary" onClick={onClose} type="RAISED">Ok</ActionButton>
+      </DialogActions>
     </Dialog>
   );
 };
