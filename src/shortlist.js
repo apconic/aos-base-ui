@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Panel from './panel';
-import { ListItem } from 'material-ui/List';
+import { ListItem, ListItemText } from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import { isEmpty } from 'lodash';
+import ArrowForward from 'material-ui-icons/ArrowForward';
+import ArrowBack from 'material-ui-icons/ArrowBack';
+import ArrowUpward from 'material-ui-icons/ArrowUpward';
+import ArrowDownward from 'material-ui-icons/ArrowDownward'
 
 export default class Shortlist extends Component {
   constructor(props) {
@@ -122,12 +126,13 @@ export default class Shortlist extends Component {
         <ListItem
           key={value}
           style={style}
-          onTouchTap={() => {
+          button
+          onClick={() => {
             const newItem = isSelected ? {} : item;
             this.setState({ selectedShortlistItem: newItem });
           }}
         >
-          {value}
+          <ListItemText>{value}</ListItemText>
         </ListItem>
       );
     });
@@ -144,13 +149,14 @@ export default class Shortlist extends Component {
       return (
         <ListItem
           key={value}
+          button
           style={style}
-          onTouchTap={() => {
+          onClick={() => {
             const newItem = isSelected ? {} : item;
             this.setState({ selectedListItem: newItem });
           }}
         >
-          {value}
+          <ListItemText>{value}</ListItemText>
         </ListItem>
       );
     });
@@ -159,11 +165,11 @@ export default class Shortlist extends Component {
   render() {
     const { displayName, subtitle } = this.props;
     return (
-      <Panel title={displayName} subtitle={subtitle} zDepth={1}>
+      <Panel title={displayName} subtitle={subtitle} elevation={2}>
         <div className="row middle-xs">
           <div className="col-xs-5 col-lg-5 col-sm-5 col-md-5">
             <div style={{ paddingBottom: '1em' }} className="row center-xs">Available</div>
-            <Paper zDepth={1} style={{ height: 180, overflowY: 'auto' }}>
+            <Paper elevation={1} style={{ height: 180, overflowY: 'auto' }}>
               {this.renderFullList()}
             </Paper>
           </div>
@@ -172,41 +178,34 @@ export default class Shortlist extends Component {
               <div className="row center-lg center-md center-sm ">
                 <IconButton
                   style={{ marginBottom: '1em' }}
-                  onTouchTap={this.onItemSelect}
-                  iconClassName="material-icons"
-                >arrow_forward
+                  onClick={this.onItemSelect}
+                ><ArrowForward />
                 </IconButton>
               </div>
               <div className="row center-lg center-md center-sm ">
                 <IconButton
-                  onTouchTap={this.onItemUnselect}
-                  iconClassName="material-icons"
-                >arrow_back
+                  onClick={this.onItemUnselect}
+                ><ArrowBack />
                 </IconButton>
               </div>
             </div>
           </div>
           <div className="col-xs-5">
             <div style={{ paddingBottom: '1em' }} className="row center-xs">Selected</div>
-            <Paper zDepth={1} style={{ height: 180, overflowY: 'auto' }}>
+            <Paper elevation={1} style={{ height: 180, overflowY: 'auto' }}>
               {this.renderShortList()}
             </Paper>
           </div>
           <div className="col-xs-1">
             <div className="row middle-xs column-xs">
               <div className="row center-xs">
-                <IconButton
-                  style={{ marginBottom: '1em' }}
-                  onTouchTap={this.moveUp}
-                  iconClassName="material-icons"
-                >arrow_upward
+                <IconButton style={{ marginBottom: '1em' }} onClick={this.moveUp}>
+                  <ArrowUpward />
                 </IconButton>
               </div>
               <div className="row center-xs">
-                <IconButton
-                  onTouchTap={this.moveDown}
-                  iconClassName="material-icons"
-                >arrow_downward
+                <IconButton onClick={this.moveDown}>
+                  <ArrowDownward />
                 </IconButton>
               </div>
             </div>

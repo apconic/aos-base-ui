@@ -11,7 +11,7 @@ import MutableGridList from './mutable-grid-list';
 import Notification from './notification';
 import Panel from './panel';
 import PanelWithHeader from './panel-with-header';
-// import Shortlist from './shortlist';
+import Shortlist from './shortlist';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import withAuth from './composers/withAuth';
@@ -30,7 +30,7 @@ export {
   Notification,
   Panel,
   PanelWithHeader,
-//  Shortlist,
+  Shortlist,
   SimpleGridList,
   SimpleGridTile,
   withAuth,
