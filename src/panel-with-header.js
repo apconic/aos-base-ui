@@ -1,50 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
-import { grey300 } from 'material-ui/styles/colors';
+import Card, { CardHeader, CardContent } from 'material-ui/Card';
+import { grey } from 'material-ui/colors';
 
 class PanelWithHeader extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      style: { background: grey300 },
+      style: { background: grey[300] },
       titleStyle: { fontSize: '16pt' },
-      zDepth: 1,
+      zDepth: 1
     };
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  onMouseOver() {
+  onMouseOver () {
     this.setState({ zDepth: 4 });
   }
 
-  onMouseLeave() {
+  onMouseLeave () {
     this.setState({ zDepth: 1 });
   }
 
-  render() {
+  render () {
     const style = this.state.style;
     const zDepth = this.state.zDepth;
-    const header = (this.props.title || this.props.subtitle) ?
-        (<CardHeader
-          title={this.props.title}
-          subtitle={this.props.subtitle}
-          style={style}
-          titleStyle={this.state.titleStyle}
-        />) : '';
+    const header = (this.props.title || this.props.subtitle)
+      ? (<CardHeader
+        title={this.props.title}
+        subheader={this.props.subtitle}
+        style={style}
+      />) : '';
 
     return (
       <Card
         zDepth={zDepth}
+        raised
         style={this.props.style}
         onMouseOver={this.onMouseOver}
         onMouseLeave={this.onMouseLeave}
       >
         {header}
-        <CardText>
+        <CardContent>
           {this.props.children}
-        </CardText>
+        </CardContent>
       </Card>
     );
   }
@@ -54,7 +54,7 @@ PanelWithHeader.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   children: PropTypes.node,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default PanelWithHeader;

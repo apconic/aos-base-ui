@@ -1,6 +1,6 @@
-import SimpleRowActionTable from './tables/simple-row-action-table';
-import EditTable from './tables/editable-table';
-import SimpleTable from './/tables/simple-table';
+// import SimpleRowActionTable from './tables/simple-row-action-table';
+// import EditTable from './tables/editable-table';
+// import SimpleTable from './tables/simple-table';
 import ActionButton from './action-button';
 import AppHeader from './app-header';
 import BaseSubheader from './base-subheader';
@@ -17,14 +17,15 @@ import SimpleGridTile from './simple-grid-tile';
 import withAuth from './composers/withAuth';
 
 export {
-  EditTable,
-  SimpleRowActionTable,
-  SimpleTable,
+//  SimpleRowActionTable,
+//  EditTable,
+//  SimpleTable,
   ActionButton,
   AppHeader,
   BaseSubheader,
   ConfirmationDialog,
   IconFactory,
+  ImageDialog,
   MutableGridList,
   Notification,
   Panel,
@@ -32,5 +33,5 @@ export {
   Shortlist,
   SimpleGridList,
   SimpleGridTile,
-  withAuth,
-}
+  withAuth
+};

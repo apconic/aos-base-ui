@@ -1,129 +1,130 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import { omit } from 'lodash';
 import IconButton from 'material-ui/IconButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FontIcon from 'material-ui/FontIcon';
+import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
 import PropTypes from 'prop-types';
+// material-ui icons.
+import ContentCopy from 'material-ui-icons/ContentCopy';
+import Videocam from 'material-ui-icons/Videocam';
+import Edit from 'material-ui-icons/Edit';
+import Delete from 'material-ui-icons/Delete';
+import Add from 'material-ui-icons/Add';
+import LocalOffer from 'material-ui-icons/LocalOffer';
+import List from 'material-ui-icons/List';
 
 class ActionButton extends Component {
-  getIconButton() {
-    const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getIconButton () {
+    const { type, icon, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">{icon}</FontIcon>
+        <Icon>{icon}</Icon>
       </IconButton>
     );
   }
 
-  getSvgIconButton() {
-    const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+  // Seems like this is legacy.
+  // Possible solution in material-ui-icons?
+  /* getSvgIconButton() {
+    const { type, icon, ...other } = this.props;
     return (
       <IconButton {...other}>
         {icon}
       </IconButton>
     );
-  }
+  } */
 
-  getCopyButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCopyButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">content_copy</FontIcon>
+        <ContentCopy />
       </IconButton>
     );
   }
 
-  getCameraPreviewButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCameraPreviewButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">videocam</FontIcon>
+        <Videocam />
       </IconButton>
     );
   }
 
-  getEditButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getEditButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">edit</FontIcon>
+        <Edit />
       </IconButton>
     );
   }
 
-  getDeleteButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getDeleteButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">delete</FontIcon>
+        <Delete />
       </IconButton>
     );
   }
 
-  getAddButton() {
-    const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getAddButton () {
+    const { type, ...other } = this.props;
     return (
-      <FloatingActionButton
-        mini
-        {...other}
-      >
-        <FontIcon className="material-icons">add</FontIcon>
-      </FloatingActionButton>
+      <Button dense fab color='primary' aria-label='add' {...omit(other, ['tooltip', 'primary'])}>
+        <Add />
+      </Button>
     );
   }
 
-  getRfidReadButton() {
-    const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getRfidReadButton () {
+    const { type, ...other } = this.props;
     return (
-      <FloatingActionButton
-        mini
-        {...other}
-      >
-        <FontIcon className="material-icons">local_offer</FontIcon>
-      </FloatingActionButton>
+      <Button dense fab color='primary' aria-label='read-rfid-card' {...omit(other, ['tooltip', 'primary'])}>
+        <LocalOffer />
+      </Button>
     );
   }
 
-  getCodeListButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCodeListButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
-        <FontIcon className="material-icons">list</FontIcon>
+        <List />
       </IconButton>
     );
   }
 
-  getFlatButton() {
-    const { type, tooltip, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getFlatButton () {
+    const { type, children, ...other } = this.props;
     return (
-      <FlatButton {...other} />
+      <Button {...omit(other, ['children'])}>{children}</Button>
     );
   }
 
-  getRaisedButton() {
-    const { type, tooltip, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getRaisedButton () {
+    const { type, children, ...other } = this.props;
     return (
-      <RaisedButton {...other} />
+      <Button raised {...omit(other, ['tooltip'])}>{children}</Button>
     );
   }
 
-  getFloatingButton() {
-    const { type, tooltip, primary, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getFloatingButton () {
+    const { type, icon, color, ...other } = this.props;
     return (
-      <FloatingActionButton
-        {...other}
-      >
-        <FontIcon className="material-icons">{icon}</FontIcon>
-      </FloatingActionButton>
+      <Button fab color={color || 'primary'} {...omit(other, ['tooltip', 'color'])}>
+        <Icon>{icon}</Icon>
+      </Button>
     );
   }
 
-  renderButton() {
+  renderButton () {
     const { type } = this.props;
     switch (type) {
-      case 'SVG_ICON':
-        return this.getSvgIconButton();
+      /* case 'SVG_ICON':
+        return this.getSvgIconButton(); */
       case 'ICON':
         return this.getIconButton();
       case 'ADD':
@@ -151,7 +152,7 @@ class ActionButton extends Component {
     }
   }
 
-  render() {
+  render () {
     return this.renderButton();
   }
 }
@@ -160,6 +161,8 @@ ActionButton.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.string,
+  color: PropTypes.string,
+  children: PropTypes.node
 };
 
 export default ActionButton;

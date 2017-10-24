@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
+import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 
 class Panel extends Component {
-  renderTitle() {
+  renderTitle () {
     const { title, subtitle } = this.props;
     if (!title) {
       return '';
     }
     return (
-      <CardTitle
+      <CardHeader
         title={title}
-        subtitle={subtitle}
+        subheader={subtitle}
         style={{ paddingLeft: 16, paddingTop: 8, paddingBottom: 8 }}
       />
     );
   }
-  render() {
+  render () {
     const { style } = this.props;
     return (
       <Card zDepth={2} style={style}>
         {this.renderTitle()}
         <Divider />
-        <CardText>
+        <CardContent>
           {this.props.children}
-        </CardText>
+        </CardContent>
       </Card>
     );
   }
@@ -35,7 +35,7 @@ Panel.propTypes = {
   title: PropTypes.any,
   children: PropTypes.any,
   subtitle: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default Panel;

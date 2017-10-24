@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Subheader from 'material-ui/Subheader';
+import Typography from 'material-ui/Typography';
 
 const BaseSubheader = (props) => (
-  <Subheader {...props}>
+  <Typography type='subheading' {...props}>
     {props.children}
-  </Subheader>
+  </Typography>
 );
 
 BaseSubheader.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default BaseSubheader;

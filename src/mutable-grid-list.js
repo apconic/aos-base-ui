@@ -4,15 +4,16 @@ import { findIndex } from 'lodash';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import ActionButton from './action-button';
-import { blue300 } from 'material-ui/styles/colors';
+import { blue } from 'material-ui/colors';
+import { GridListTileBar } from 'material-ui/GridList';
 
 export default class MutableGridList extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.onGridTileAction = this.onGridTileAction.bind(this);
   }
 
-  onGridTileAction(val) {
+  onGridTileAction (val) {
     const { action, values, type, gridDisplayKey } = this.props;
     if (type === 'TEXT') {
       return () => action(findIndex(values, (v) => v === val));
@@ -20,45 +21,50 @@ export default class MutableGridList extends Component {
     return () => action(findIndex(values, (v) => v[gridDisplayKey] === val));
   }
 
-  renderGridTiles(type, gridDisplayKey, values) {
+  renderGridTiles (type, gridDisplayKey, values) {
     let index = 0;
     return (
       values.map((val) => {
         index += 1;
         if (type === 'TEXT') {
           return (
-            <SimpleGridTile
-              key={index}
-              title={val}
-              titlePosition="top"
-              titleBackground={blue300}
-              actionIcon={<ActionButton
-                type="ICON"
-                icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val)}
-              />}
-            />
+            <SimpleGridTile key={index}>
+              <GridListTileBar
+                title={val}
+                titlePosition='top'
+                style={{ background: blue[300] }}
+                actionIcon={
+                  <ActionButton
+                    type='ICON'
+                    icon='indeterminate_check_box'
+                    onClick={this.onGridTileAction(val)}
+                  />
+                }
+              />
+            </SimpleGridTile>
           );
         }
         return (
-          <SimpleGridTile
-            key={index}
-            title={val[gridDisplayKey]}
-            titlePosition="top"
-            titleBackground={blue300}
-            actionIcon={
-              <ActionButton
-                type="ICON"
-                icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val[gridDisplayKey])}
-              />
-            }
-          />);
+          <SimpleGridTile key={index}>
+            <GridListTileBar
+              title={val[gridDisplayKey]}
+              titlePosition='top'
+              style={{ background: blue[300] }}
+              actionIcon={
+                <ActionButton
+                  type='ICON'
+                  icon='indeterminate_check_box'
+                  onClick={this.onGridTileAction(val[gridDisplayKey])}
+                />
+              }
+            />
+          </SimpleGridTile>
+        );
       })
     );
   }
 
-  render() {
+  render () {
     const { values, action, type, gridDisplayKey, ...other } = this.props;
     return (
       <SimpleGridList {...other}>
@@ -72,5 +78,5 @@ MutableGridList.propTypes = {
   values: PropTypes.array,
   action: PropTypes.func,
   gridDisplayKey: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.string
 };

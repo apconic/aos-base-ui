@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table,
+import Table, {
   TableRow,
-  TableHeader,
-  TableHeaderColumn,
-  TableRowColumn,
-  TableBody } from 'material-ui/Table';
+  TableHead,
+  TableCell,
+  TableBody
+} from 'material-ui/Table';
 import ActionButton from '../action-button';
 import * as Colors from 'material-ui/styles/colors';
 
 import { isArray } from 'lodash';
 
 export default class SimpleTable extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.renderRowColumns = this.renderRowColumns.bind(this);
     this.renderRow = this.renderRow.bind(this);
@@ -22,13 +22,13 @@ export default class SimpleTable extends Component {
     this.state = { selectedRows: [], selectedRowNumbers: [] };
   }
 
-  onActionClick(action) {
+  onActionClick (action) {
     if (action.onTouchTap) {
       action.onTouchTap(this.selectedRows);
     }
   }
 
-  onRowSelection(selection) {
+  onRowSelection (selection) {
     const { rows } = this.props.data;
     if (selection === 'all') {
       this.selectedRows = rows;
@@ -40,23 +40,23 @@ export default class SimpleTable extends Component {
     }
   }
 
-  renderRowColumns(row, fields) {
+  renderRowColumns (row, fields) {
     let index = 0;
     return fields.map((field) => (
-      <TableRowColumn key={index++}>{row[field]}</TableRowColumn>
+      <TableCell key={index++}>{row[field]}</TableCell>
     ));
   }
 
-  renderRow() {
+  renderRow () {
     const { rows, fields } = this.props.data;
     return rows.map((row, index) => (
-      <TableRow key={index} >
+      <TableRow key={index}>
         {this.renderRowColumns(row, fields)}
       </TableRow>
     ));
   }
 
-  renderTitleWithButton() {
+  renderTitleWithButton () {
     let index = 0;
     const { title, actions } = this.props.data;
     return (
@@ -73,8 +73,8 @@ export default class SimpleTable extends Component {
             return (
               <ActionButton
                 key={index++}
-                { ...action }
-                onTouchTap={this.onActionClick.bind(this, action)} // eslint-disable-line
+                {...action}
+                onClick={this.onActionClick.bind(this, action)} // eslint-disable-line
                 style={{ margin: '0.5em' }}
                 disabled={disabled}
               />
@@ -85,32 +85,32 @@ export default class SimpleTable extends Component {
     );
   }
 
-  renderTitle() {
-    const { headers } = this.props.data;
+  renderTitle () {
+    // const { headers } = this.props.data;
     return (
       <TableRow>
-        <TableHeaderColumn style={{ fontSize: 20 }} colSpan={headers.length}>
+        <TableCell style={{ fontSize: 20 }}>
           {this.renderTitleWithButton()}
-        </TableHeaderColumn>
+        </TableCell>
       </TableRow>
     );
   }
 
-  renderHeaders() {
+  renderHeaders () {
     const { headers } = this.props.data;
     let index = 0;
     return (
       <TableRow>
         {
           headers.map((header) =>
-            (<TableHeaderColumn key={index++}>{header.val}</TableHeaderColumn>)
+            (<TableCell key={index++}>{header.val}</TableCell>)
           )
         }
       </TableRow>
     );
   }
 
-  render() {
+  render () {
     const tableOptions = {
       fixedHeader: true,
       fixedFooter: true,
@@ -122,14 +122,14 @@ export default class SimpleTable extends Component {
       deselectOnClickaway: false,
       displayRowCheckbox: true,
       height: '310px',
-      style: { overflowX: 'auto' },
+      style: { overflowX: 'auto' }
     };
     return (
       <Table {...tableOptions} onRowSelection={this.onRowSelection}>
-        <TableHeader {...tableOptions}>
-         {this.renderTitle()}
-         {this.renderHeaders()}
-        </TableHeader>
+        <TableHead {...tableOptions}>
+          {this.renderTitle()}
+          {this.renderHeaders()}
+        </TableHead>
         <TableBody {...tableOptions}>
           {
             this.renderRow()
@@ -142,5 +142,5 @@ export default class SimpleTable extends Component {
 
 SimpleTable.propTypes = {
   data: PropTypes.any,
-  title: PropTypes.string,
+  title: PropTypes.string
 };

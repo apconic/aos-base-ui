@@ -1,54 +1,21 @@
-import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import React from 'react';
+import Button from 'material-ui/Button';
+import Dialog, {
+  DialogActions, DialogContent, DialogContentText, DialogTitle
+} from 'material-ui/Dialog';
 import PropTypes from 'prop-types';
 
-export default class ConfirmationDialog extends Component {
-  constructor(props) {
-    super(props);
-    this.handleOk = this.handleOk.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-  }
-
-  handleOk() {
-    this.props.handleOk();
-  }
-
-  handleCancel() {
-    this.props.handleCancel();
-  }
-
-  render() {
-    const
-      { handleOk,  // eslint-disable-line no-unused-vars
-        handleCancel,  // eslint-disable-line no-unused-vars
-        content,
-        open,
-        ...other }
-       = this.props;
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        secondary
-        onTouchTap={this.handleCancel}
-      />,
-      <FlatButton
-        label="Ok"
-        primary
-        keyboardFocused
-        onTouchTap={this.handleOk}
-      />,
-    ];
+export default class ConfirmationDialog extends React.Component {
+  render () {
+    const { handleOk, handleCancel, content, open, ...other } = this.props;
     return (
-      <Dialog
-        title="Confirmation"
-        actions={actions}
-        modal={false}
-        open={open}
-        onRequestClose={this.handleCancel}
-        {...other}
-      >
-        {content}
+      <Dialog open={open} onRequestClose={handleCancel} {...other}>
+        <DialogTitle>Confirmation</DialogTitle>
+        <DialogContent><DialogContentText>{content}</DialogContentText></DialogContent>
+        <DialogActions>
+          <Button color='primary' onClick={handleOk}>Ok</Button>
+          <Button color='accent' onClick={handleCancel}>Cancel</Button>
+        </DialogActions>
       </Dialog>
     );
   }
@@ -58,7 +25,5 @@ ConfirmationDialog.propTypes = {
   handleOk: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
   content: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
+  open: PropTypes.bool.isRequired
 };
-
-ConfirmationDialog.defaultProps = { open: false };
