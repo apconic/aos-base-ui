@@ -4,7 +4,7 @@ import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 
 class Panel extends Component {
-  renderTitle() {
+  renderTitle () {
     const { title, subtitle } = this.props;
     if (!title) {
       return '';
@@ -17,7 +17,7 @@ class Panel extends Component {
       />
     );
   }
-  render() {
+  render () {
     const { style } = this.props;
     return (
       <Card zDepth={2} style={style}>
@@ -35,7 +35,7 @@ Panel.propTypes = {
   title: PropTypes.any,
   children: PropTypes.any,
   subtitle: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default Panel;

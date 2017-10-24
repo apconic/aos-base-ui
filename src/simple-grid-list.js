@@ -16,7 +16,7 @@ SimpleGridList.propTypes = {
   children: PropTypes.node,
   cols: PropTypes.number,
   padding: PropTypes.number,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default SimpleGridList;

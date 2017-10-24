@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import FlatButton from 'material-ui/FlatButton';
-// import RaisedButton from 'material-ui/RaisedButton';
+import { omit } from 'lodash';
 import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
@@ -15,8 +14,8 @@ import LocalOffer from 'material-ui-icons/LocalOffer';
 import List from 'material-ui-icons/List';
 
 class ActionButton extends Component {
-  getIconButton() {
-    const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getIconButton () {
+    const { type, icon, ...other } = this.props;
     return (
       <IconButton {...other}>
         <Icon>{icon}</Icon>
@@ -27,7 +26,7 @@ class ActionButton extends Component {
   // Seems like this is legacy.
   // Possible solution in material-ui-icons?
   /* getSvgIconButton() {
-    const { type, icon, ...other } = this.props; // eslint-disable-line no-unused-vars
+    const { type, icon, ...other } = this.props;
     return (
       <IconButton {...other}>
         {icon}
@@ -35,8 +34,8 @@ class ActionButton extends Component {
     );
   } */
 
-  getCopyButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCopyButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
         <ContentCopy />
@@ -44,8 +43,8 @@ class ActionButton extends Component {
     );
   }
 
-  getCameraPreviewButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCameraPreviewButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
         <Videocam />
@@ -53,8 +52,8 @@ class ActionButton extends Component {
     );
   }
 
-  getEditButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getEditButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
         <Edit />
@@ -62,8 +61,8 @@ class ActionButton extends Component {
     );
   }
 
-  getDeleteButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getDeleteButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
         <Delete />
@@ -71,26 +70,26 @@ class ActionButton extends Component {
     );
   }
 
-  getAddButton() {
-    const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getAddButton () {
+    const { type, ...other } = this.props;
     return (
-      <Button dense fab color="primary" aria-label="add" {...other}>
+      <Button dense fab color='primary' aria-label='add' {...omit(other, ['tooltip', 'primary'])}>
         <Add />
       </Button>
     );
   }
 
-  getRfidReadButton() {
-    const { type, tooltip, primary, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getRfidReadButton () {
+    const { type, ...other } = this.props;
     return (
-      <Button dense fab color="primary" aria-label="read-rfid-card" {...other}>
+      <Button dense fab color='primary' aria-label='read-rfid-card' {...omit(other, ['tooltip', 'primary'])}>
         <LocalOffer />
       </Button>
     );
   }
 
-  getCodeListButton() {
-    const { type, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getCodeListButton () {
+    const { type, ...other } = this.props;
     return (
       <IconButton {...other}>
         <List />
@@ -98,33 +97,33 @@ class ActionButton extends Component {
     );
   }
 
-  getFlatButton() {
-    const { type, tooltip, children, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getFlatButton () {
+    const { type, children, ...other } = this.props;
     return (
-      <Button {...other}>{children}</Button>
+      <Button {...omit(other, ['children'])}>{children}</Button>
     );
   }
 
-  getRaisedButton() {
-    const { type, tooltip, children, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getRaisedButton () {
+    const { type, children, ...other } = this.props;
     return (
-      <Button raised {...other}>{children}</Button>
+      <Button raised {...omit(other, ['tooltip'])}>{children}</Button>
     );
   }
 
-  getFloatingButton() {
-    const { type, tooltip, icon, color, ...other } = this.props; // eslint-disable-line no-unused-vars
+  getFloatingButton () {
+    const { type, icon, color, ...other } = this.props;
     return (
-      <Button fab color={color ? color : "primary"} {...other}>
+      <Button fab color={color || 'primary'} {...omit(other, ['tooltip', 'color'])}>
         <Icon>{icon}</Icon>
       </Button>
     );
   }
 
-  renderButton() {
+  renderButton () {
     const { type } = this.props;
     switch (type) {
-/* case 'SVG_ICON':
+      /* case 'SVG_ICON':
         return this.getSvgIconButton(); */
       case 'ICON':
         return this.getIconButton();
@@ -153,7 +152,7 @@ class ActionButton extends Component {
     }
   }
 
-  render() {
+  render () {
     return this.renderButton();
   }
 }
@@ -162,6 +161,8 @@ ActionButton.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.string,
+  color: PropTypes.string,
+  children: PropTypes.node
 };
 
 export default ActionButton;

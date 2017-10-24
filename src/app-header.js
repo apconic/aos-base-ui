@@ -7,15 +7,15 @@ import MenuIcon from 'material-ui-icons/Menu';
 import PropTypes from 'prop-types';
 
 export default class AppHeader extends Component {
-  render() {
+  render () {
     const { toggleNavbar, ...other } = this.props;
     return (
       <AppBar {...other}>
         <Toolbar>
-          <IconButton style={{ marginLeft: -12, marginRight: 20 }} color="contrast" aria-label="Menu">
+          <IconButton style={{ marginLeft: -12, marginRight: 20 }} color='contrast' aria-label='Menu'>
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="inherit">
+          <Typography type='title' color='inherit'>
             {this.props.title}
           </Typography>
         </Toolbar>

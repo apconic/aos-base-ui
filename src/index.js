@@ -33,5 +33,5 @@ export {
   Shortlist,
   SimpleGridList,
   SimpleGridTile,
-  withAuth,
-}
+  withAuth
+};

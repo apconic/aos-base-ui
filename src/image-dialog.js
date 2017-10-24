@@ -1,6 +1,5 @@
 import React from 'react';
-import {
-  Dialog,
+import Dialog, {
   DialogTitle,
   DialogContent,
   DialogActions
@@ -13,9 +12,9 @@ const ImageDialog = ({ open, name, url, onClose }) => {
   return (
     <Dialog open={open} onRequestClose={onClose} style={contentStyle}>
       <DialogTitle>{name}</DialogTitle>
-      <DialogContent><img alt="Camera" src={url} height={350} width={500} /></DialogContent>
+      <DialogContent><img alt='Camera' src={url} height={350} width={500} /></DialogContent>
       <DialogActions>
-        <ActionButton color="primary" onClick={onClose} type="RAISED">Ok</ActionButton>
+        <ActionButton color='primary' onClick={onClose} type='RAISED'>Ok</ActionButton>
       </DialogActions>
     </Dialog>
   );
@@ -25,7 +24,7 @@ ImageDialog.propTypes = {
   open: PropTypes.bool,
   url: PropTypes.string,
   name: PropTypes.string,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func
 };
 
 export default ImageDialog;

@@ -8,20 +8,19 @@ import { Table,
   TableBody } from 'material-ui/Table';
 import Toggle from 'material-ui/Toggle';
 import ActionButton from '../action-button';
-import FlatButton from 'material-ui/FlatButton';
 import TableRowHeader from './table-row-header';
 import * as Colors from 'material-ui/styles/colors';
 import { split, filter } from 'lodash';
 
 export default class EditTable extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.renderRowColumns = this.renderRowColumns.bind(this);
     this.renderRow = this.renderRow.bind(this);
     this.renderHeaders = this.renderHeaders.bind(this);
   }
 
-  renderRowColumns(row, fields) {
+  renderRowColumns (row, fields) {
     let index = 0;
     return fields.map((field) => {
       const tokens = split(field.val, '.', 3);
@@ -30,9 +29,9 @@ export default class EditTable extends Component {
       for (let i = 1; i < tokens.length; i++) {
         value = value ? value[tokens[i]] : '';
       }
-      if (field.edit && (typeof value) == 'boolean') {
-        return <TableRowColumn key={index}> 
-          <Toggle 
+      if (field.edit && (typeof value) === 'boolean') {
+        return <TableRowColumn key={index}>
+          <Toggle
             onToggle={field.onChange(row)}
             toggled={value}
           />
@@ -42,7 +41,7 @@ export default class EditTable extends Component {
     });
   }
 
-  renderActions(row, actions) {
+  renderActions (row, actions) {
     if (!actions || actions.length === 0) return '';
     const actionsToShow = filter(actions, (action) => {
       if (action.show) {
@@ -53,16 +52,16 @@ export default class EditTable extends Component {
     let index = 0;
     return (
       <TableRowColumn>
-        <div className="row" style={{ marginLeft: '16px' }}>
+        <div className='row' style={{ marginLeft: '16px' }}>
           {actionsToShow.map((action) =>
             (
-            <ActionButton
-              key={index++}
-              type={action.type}
-              onTouchTap={action.onTouchTap(row)}
-              style={{ margin: '0.5em' }}
-              icon={action.icon}
-            />
+              <ActionButton
+                key={index++}
+                type={action.type}
+                onTouchTap={action.onTouchTap(row)}
+                style={{ margin: '0.5em' }}
+                icon={action.icon}
+              />
             )
           )}
         </div>
@@ -70,7 +69,7 @@ export default class EditTable extends Component {
     );
   }
 
-  renderRow() {
+  renderRow () {
     const { rows, fields, actions } = this.props.data;
     let index = 0;
     return rows.map((row) => (
@@ -85,7 +84,7 @@ export default class EditTable extends Component {
     ));
   }
 
-  renderHeaders() {
+  renderHeaders () {
     const { headers } = this.props.data;
     let index = 0;
     return (
@@ -99,7 +98,7 @@ export default class EditTable extends Component {
     );
   }
 
-  renderTitle() {
+  renderTitle () {
     const { title, headers } = this.props.data;
     console.log(this.props.data);
     if (title) {
@@ -108,7 +107,7 @@ export default class EditTable extends Component {
         fontSize: 15,
         fontWeight: 600,
         color: Colors.darkBlack,
-        backgroundColor: Colors.grey200,
+        backgroundColor: Colors.grey200
       };
       return (
         <TableRowHeader headers={header} colSpan={headers.length} style={style} />
@@ -117,9 +116,9 @@ export default class EditTable extends Component {
     return '';
   }
 
-  render() {
-    const { headers, height } = this.props.data;
-    const tableOptions = {
+  render () {
+    const { headers } = this.props.data;
+    /* const tableOptions = {
       fixedHeader: true,
       fixedFooter: true,
       stripedRows: true,
@@ -129,25 +128,25 @@ export default class EditTable extends Component {
       enableSelectAll: false,
       deselectOnClickaway: false,
       displayRowCheckbox: false,
-      height: height || '200px',
-    };
+      height: height || '200px'
+    }; */
 
     const tableHeaderProps = {
       displaySelectAll: false,
       adjustForCheckbox: false,
-      enableSelectAll: false,
+      enableSelectAll: false
     };
 
     const tableProps = {
       height: '60vh',
       selectable: false,
-      multiSelectable: false,
+      multiSelectable: false
     };
 
     const tableBodyProps = {
       displayRowCheckbox: false,
       stripedRows: true,
-      showRowHover: true,
+      showRowHover: true
     };
 
     return (
@@ -168,5 +167,5 @@ export default class EditTable extends Component {
 
 EditTable.propTypes = {
   data: PropTypes.object,
-  height: PropTypes.any,
+  height: PropTypes.any
 };

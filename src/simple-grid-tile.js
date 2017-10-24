@@ -9,7 +9,7 @@ const SimpleGridTile = (props) => (
 );
 
 SimpleGridTile.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default SimpleGridTile;

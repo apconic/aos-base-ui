@@ -4,34 +4,34 @@ import Popover from 'material-ui/Popover';
 import { ListItem, ListItemText } from 'material-ui/List';
 import * as Colors from 'material-ui/colors';
 import Avatar from 'material-ui/Avatar';
-import Icon from 'material-ui/Icon'
+import Icon from 'material-ui/Icon';
 
 export default class Notification extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.closePopover = this.closePopover.bind(this);
   }
 
-  getNotificationStyle() {
+  getNotificationStyle () {
     return { width: '30em', height: '6em' };
   }
 
-  getNotificationFontIcon(notificationType) {
+  getNotificationFontIcon (notificationType) {
     switch (notificationType) {
       case 'Success':
-        return <Icon color="white">check</Icon>;
+        return <Icon color='white'>check</Icon>;
       case 'Error':
-        return <Icon color="white">clear</Icon>;
+        return <Icon color='white'>clear</Icon>;
       case 'Info':
-        return <Icon color="white">info</Icon>;
+        return <Icon color='white'>info</Icon>;
       case 'Warning':
-        return <Icon color="white">warning</Icon>;
+        return <Icon color='white'>warning</Icon>;
       default:
-        return <Icon color="white">verified_user</Icon>;
+        return <Icon color='white'>verified_user</Icon>;
     }
   }
 
-  getAvatarColor(notificationType) {
+  getAvatarColor (notificationType) {
     switch (notificationType) {
       case 'Success':
         return Colors.lightGreen[400];
@@ -46,14 +46,14 @@ export default class Notification extends Component {
     }
   }
 
-  closePopover() {
+  closePopover () {
     const { clearNotification } = this.props;
     if (clearNotification) {
       clearNotification();
     }
   }
 
-  render() {
+  render () {
     const anchorOrigin = { horizontal: 'right', vertical: 'bottom' };
     const targetOrigin = { horizontal: 'right', vertical: 'top' };
     const { notification, open, anchorEl } = this.props;
@@ -65,9 +65,8 @@ export default class Notification extends Component {
         anchorEl={anchorEl}
         anchorOrigin={anchorOrigin}
         transformOrigin={targetOrigin}
-        style={{ zDepth: 2 }}
+        style={{ zDepth: 2, ...style }}
         onRequestClose={this.closePopover}
-        style={style}
       >
         <ListItem>
           <Avatar style={{ backgroundColor: this.getAvatarColor(notification.type) }}>
@@ -87,5 +86,5 @@ Notification.propTypes = {
   open: PropTypes.bool,
   anchorEl: PropTypes.any,
   clearNotification: PropTypes.func,
-  notification: PropTypes.object,
+  notification: PropTypes.object
 };

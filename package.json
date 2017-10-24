@@ -5,15 +5,25 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel -d lib/ src/",
-    "prepublish": "yon run build"
+    "lint": "eslint .",
+    "prepublish": "yon run lint && yon run build"
   },
   "keywords": [],
   "author": "",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
     "material-ui": "1.0.0-beta.17",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

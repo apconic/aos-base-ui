@@ -10,7 +10,7 @@ import Launch from 'material-ui-icons/Launch';
 import Assessment from 'material-ui-icons/Assessment';
 
 const IconFactory = {
-  getIcon(icon) {
+  getIcon (icon) {
     switch (icon) {
       // Legacy Material-UI 0.x
       case 'ActionHome':
@@ -75,7 +75,7 @@ const IconFactory = {
       default:
         return <div />;
     }
-  },
+  }
 };
 
 export default IconFactory;
