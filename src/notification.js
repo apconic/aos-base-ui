@@ -7,11 +7,6 @@ import * as Colors from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 
 export default class Notification extends Component {
-  constructor(props) {
-    super(props);
-    this.closePopover = this.closePopover.bind(this);
-  }
-
   getNotificationStyle() {
     return { width: '30em', height: '6em' };
   }

@@ -4,20 +4,6 @@ import Dialog from 'material-ui/Dialog';
 import PropTypes from 'prop-types';
 
 export default class ConfirmationDialog extends Component {
-  constructor(props) {
-    super(props);
-    this.handleOk = this.handleOk.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-  }
-
-  handleOk() {
-    this.props.handleOk();
-  }
-
-  handleCancel() {
-    this.props.handleCancel();
-  }
-
   render() {
     const
       { handleOk,  // eslint-disable-line no-unused-vars
@@ -30,13 +16,13 @@ export default class ConfirmationDialog extends Component {
       <FlatButton
         label="Cancel"
         secondary
-        onTouchTap={this.handleCancel}
+        onClick={this.handleCancel}
       />,
       <FlatButton
         label="Ok"
         primary
         keyboardFocused
-        onTouchTap={this.handleOk}
+        onClick={this.props.handleOk()}
       />,
     ];
     return (
@@ -45,7 +31,7 @@ export default class ConfirmationDialog extends Component {
         actions={actions}
         modal={false}
         open={open}
-        onRequestClose={this.handleCancel}
+        onRequestClose={this.props.handleCancel()}
         {...other}
       >
         {content}

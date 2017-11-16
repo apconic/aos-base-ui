@@ -7,11 +7,6 @@ import ActionButton from './action-button';
 import { blue300 } from 'material-ui/styles/colors';
 
 export default class MutableGridList extends Component {
-  constructor(props) {
-    super(props);
-    this.onGridTileAction = this.onGridTileAction.bind(this);
-  }
-
   onGridTileAction(val) {
     const { action, values, type, gridDisplayKey } = this.props;
     if (type === 'TEXT') {
@@ -35,7 +30,7 @@ export default class MutableGridList extends Component {
               actionIcon={<ActionButton
                 type="ICON"
                 icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val)}
+                onClick={this.onGridTileAction(val)}
               />}
             />
           );
@@ -50,7 +45,7 @@ export default class MutableGridList extends Component {
               <ActionButton
                 type="ICON"
                 icon="indeterminate_check_box"
-                onTouchTap={this.onGridTileAction(val[gridDisplayKey])}
+                onClick={this.onGridTileAction(val[gridDisplayKey])}
               />
             }
           />);

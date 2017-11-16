@@ -7,16 +7,11 @@ import Paper from 'material-ui/Paper';
 import { isEmpty } from 'lodash';
 
 export default class Shortlist extends Component {
-  constructor(props) {
-    super(props);
-    const { list, value } = props;
-    this.state = { list: this.getUpdatedList(list, value), shortlist: value || [],
-      selectedListItem: {}, selectedShortlistItem: {} };
-    this.onItemSelect = this.onItemSelect.bind(this);
-    this.onItemUnselect = this.onItemUnselect.bind(this);
-    this.moveUp = this.moveUp.bind(this);
-    this.moveDown = this.moveDown.bind(this);
-    this.indexOf = this.indexOf.bind(this);
+  state = {
+    list: this.getUpdatedList(list, value),
+    shortlist: value || [],
+    selectedListItem: {},
+    selectedShortlistItem: {}
   }
 
   componentWillReceiveProps(newProps) {
@@ -24,7 +19,7 @@ export default class Shortlist extends Component {
     this.setState({ list: this.getUpdatedList(list, value), shortlist: value || [] });
   }
 
-  onItemSelect() {
+  onItemSelect = () => {
     const { shortlist, selectedListItem, list } = this.state;
     if (!isEmpty(selectedListItem)) {
       shortlist.push(selectedListItem);
@@ -36,7 +31,7 @@ export default class Shortlist extends Component {
     }
   }
 
-  onItemUnselect() {
+  onItemUnselect = () => {
     const { list, selectedShortlistItem, shortlist } = this.state;
     if (!isEmpty(selectedShortlistItem)) {
       list.push(selectedShortlistItem);
@@ -86,7 +81,7 @@ export default class Shortlist extends Component {
     return index;
   }
 
-  moveDown() {
+  moveDown = () => {
     const { selectedShortlistItem, shortlist } = this.state;
     const index = shortlist.indexOf(selectedShortlistItem);
     if (!isEmpty(selectedShortlistItem) && (index < shortlist.length - 1)) {
@@ -98,7 +93,7 @@ export default class Shortlist extends Component {
     }
   }
 
-  moveUp() {
+  moveUp = () => {
     const { selectedShortlistItem, shortlist } = this.state;
     const index = shortlist.indexOf(selectedShortlistItem);
     if (!isEmpty(selectedShortlistItem) && index) {
@@ -122,7 +117,7 @@ export default class Shortlist extends Component {
         <ListItem
           key={value}
           style={style}
-          onTouchTap={() => {
+          onClick={() => {
             const newItem = isSelected ? {} : item;
             this.setState({ selectedShortlistItem: newItem });
           }}
@@ -145,7 +140,7 @@ export default class Shortlist extends Component {
         <ListItem
           key={value}
           style={style}
-          onTouchTap={() => {
+          onClick={() => {
             const newItem = isSelected ? {} : item;
             this.setState({ selectedListItem: newItem });
           }}
@@ -172,14 +167,14 @@ export default class Shortlist extends Component {
               <div className="row center-lg center-md center-sm ">
                 <IconButton
                   style={{ marginBottom: '1em' }}
-                  onTouchTap={this.onItemSelect}
+                  onClick={this.onItemSelect}
                   iconClassName="material-icons"
                 >arrow_forward
                 </IconButton>
               </div>
               <div className="row center-lg center-md center-sm ">
                 <IconButton
-                  onTouchTap={this.onItemUnselect}
+                  onClick={this.onItemUnselect}
                   iconClassName="material-icons"
                 >arrow_back
                 </IconButton>
@@ -197,14 +192,14 @@ export default class Shortlist extends Component {
               <div className="row center-xs">
                 <IconButton
                   style={{ marginBottom: '1em' }}
-                  onTouchTap={this.moveUp}
+                  onClick={this.moveUp}
                   iconClassName="material-icons"
                 >arrow_upward
                 </IconButton>
               </div>
               <div className="row center-xs">
                 <IconButton
-                  onTouchTap={this.moveDown}
+                  onClick={this.moveDown}
                   iconClassName="material-icons"
                 >arrow_downward
                 </IconButton>
