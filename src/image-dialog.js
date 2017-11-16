@@ -8,7 +8,7 @@ const ImageDialog = ({ open, name, url, onClose }) => {
     <ActionButton
       label="Ok"
       primary
-      onTouchTap={onClose}
+      onClick={onClose}
       type="RAISED"
     />,
   ];

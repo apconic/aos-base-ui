@@ -4,22 +4,17 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 import { grey300 } from 'material-ui/styles/colors';
 
 class PanelWithHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      style: { background: grey300 },
-      titleStyle: { fontSize: '16pt' },
-      zDepth: 1,
-    };
-    this.onMouseOver = this.onMouseOver.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
-  }
+  state = { 
+    style: { background: grey300 },
+    titleStyle: { fontSize: '16pt' },
+    zDepth: 1,
+  };
 
-  onMouseOver() {
+  onMouseOver = () => {
     this.setState({ zDepth: 4 });
   }
 
-  onMouseLeave() {
+  onMouseLeave = () => {
     this.setState({ zDepth: 1 });
   }
 

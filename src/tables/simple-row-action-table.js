@@ -12,14 +12,7 @@ import * as Colors from 'material-ui/styles/colors';
 import { split, filter } from 'lodash';
 
 export default class SimpleRowActionTable extends Component {
-  constructor(props) {
-    super(props);
-    this.renderRowColumns = this.renderRowColumns.bind(this);
-    this.renderRow = this.renderRow.bind(this);
-    this.renderHeaders = this.renderHeaders.bind(this);
-  }
-
-  renderRowColumns(row, fields) {
+  renderRowColumns = (row, fields) => {
     let index = 0;
     return fields.map((field) => {
       const tokens = split(field, '.', 3);
@@ -49,7 +42,7 @@ export default class SimpleRowActionTable extends Component {
             <ActionButton
               key={index++}
               type={action.type}
-              onTouchTap={action.onTouchTap(row)}
+              onClick={action.onClick(row)}
               style={{ margin: '0.5em' }}
               icon={action.icon}
             />
@@ -60,7 +53,7 @@ export default class SimpleRowActionTable extends Component {
     );
   }
 
-  renderRow() {
+  renderRow = () => {
     const { rows, fields, actions } = this.props.data;
     let index = 0;
     return rows.map((row) => (
@@ -75,7 +68,7 @@ export default class SimpleRowActionTable extends Component {
     ));
   }
 
-  renderHeaders() {
+  renderHeaders = () => {
     const { headers } = this.props.data;
     let index = 0;
     return (

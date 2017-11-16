@@ -12,23 +12,18 @@ import * as Colors from 'material-ui/styles/colors';
 import { isArray } from 'lodash';
 
 export default class SimpleTable extends Component {
-  constructor(props) {
-    super(props);
-    this.renderRowColumns = this.renderRowColumns.bind(this);
-    this.renderRow = this.renderRow.bind(this);
-    this.renderHeaders = this.renderHeaders.bind(this);
-    this.onRowSelection = this.onRowSelection.bind(this);
-    this.onActionClick = this.onActionClick.bind(this);
-    this.state = { selectedRows: [], selectedRowNumbers: [] };
+  state = {
+    selectedRows: [],
+    selectedRowNumbers: []
   }
 
-  onActionClick(action) {
-    if (action.onTouchTap) {
-      action.onTouchTap(this.selectedRows);
+  onActionClick = (action) => {
+    if (action.onClick) {
+      action.onClick(this.selectedRows);
     }
   }
 
-  onRowSelection(selection) {
+  onRowSelection = (selection) => {
     const { rows } = this.props.data;
     if (selection === 'all') {
       this.selectedRows = rows;
@@ -74,7 +69,7 @@ export default class SimpleTable extends Component {
               <ActionButton
                 key={index++}
                 { ...action }
-                onTouchTap={this.onActionClick.bind(this, action)} // eslint-disable-line
+                onClick={this.onActionClick.bind(this, action)} // eslint-disable-line
                 style={{ margin: '0.5em' }}
                 disabled={disabled}
               />
@@ -96,7 +91,7 @@ export default class SimpleTable extends Component {
     );
   }
 
-  renderHeaders() {
+  renderHeaders = () => {
     const { headers } = this.props.data;
     let index = 0;
     return (
