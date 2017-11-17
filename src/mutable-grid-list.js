@@ -7,7 +7,7 @@ import ActionButton from './action-button';
 import { blue300 } from 'material-ui/styles/colors';
 
 export default class MutableGridList extends Component {
-  onGridTileAction(val) {
+  onGridTileAction = (val) => {
     const { action, values, type, gridDisplayKey } = this.props;
     if (type === 'TEXT') {
       return () => action(findIndex(values, (v) => v === val));
