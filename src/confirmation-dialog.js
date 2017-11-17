@@ -16,13 +16,13 @@ export default class ConfirmationDialog extends Component {
       <FlatButton
         label="Cancel"
         secondary
-        onClick={this.handleCancel}
+        onClick={handleCancel()}
       />,
       <FlatButton
         label="Ok"
         primary
         keyboardFocused
-        onClick={this.props.handleOk()}
+        onClick={handleOk()}
       />,
     ];
     return (

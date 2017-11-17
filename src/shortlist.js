@@ -43,7 +43,7 @@ export default class Shortlist extends Component {
     }
   }
 
-  getUpdatedList(list, shortlist) {
+  getUpdatedList = (list, shortlist) => {
     if (shortlist) {
       const newList = list;
       shortlist.forEach((item) => {
@@ -57,7 +57,7 @@ export default class Shortlist extends Component {
     return list;
   }
 
-  indexOf(arr, item) {
+  indexOf = (arr, item) => {
     const { compareKey } = this.props;
     const givenItem = JSON.stringify(item);
     let index = -1;
