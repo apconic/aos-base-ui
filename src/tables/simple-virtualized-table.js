@@ -5,7 +5,7 @@ import _ from 'lodash';
 import 'react-virtualized/styles.css';
 import '../table.css';
 
-class ReactVirtualisedTable extends Component {
+class SimpleVirtualizedTable extends Component {
   constructor(props) {
     super(props);
     const sortBy = this.getSortBy();
@@ -18,8 +18,10 @@ class ReactVirtualisedTable extends Component {
     };
   }
 
-  getSortBy = () => this.props.sortBy ? this.props.sortBy : this.props.columns[0].key;
-
+  getSortBy = () => {
+    return this.props.sortBy ? this.props.sortBy : this.props.columns[0].key;
+  }
+  
   getData = (list, index) => list[index]
 
   sort = ({ sortBy, sortDirection }) => {
@@ -56,7 +58,7 @@ class ReactVirtualisedTable extends Component {
                 {({ width }) => (
                   <Table
                     width={width}
-                    height={400}
+                    height={350}
                     headerHeight={30}
                     rowHeight={30}
                     sort={this.sort}
@@ -80,4 +82,4 @@ class ReactVirtualisedTable extends Component {
   }
 }
 
-export default ReactVirtualisedTable;
+export default SimpleVirtualizedTable;
