@@ -94,7 +94,6 @@ export default class EditTable extends Component {
 
   renderTitle() {
     const { title, headers } = this.props.data;
-    console.log(this.props.data);
     if (title) {
       const header = [{ val: title }];
       const style = {
