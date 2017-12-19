@@ -1,7 +1,7 @@
 import SimpleRowActionTable from './tables/simple-row-action-table';
 import EditTable from './tables/editable-table';
 import SimpleTable from './tables/simple-table';
-import ReactVirtualisedTable from './tables/react-virtualised-table';
+import SimpleVirtualizedTable from './tables/simple-virtualized-table';
 import ActionButton from './action-button';
 import AppHeader from './app-header';
 import BaseSubheader from './base-subheader';
@@ -21,7 +21,7 @@ export {
   EditTable,
   SimpleRowActionTable,
   SimpleTable,
-  ReactVirtualisedTable,
+  SimpleVirtualizedTable,
   ActionButton,
   AppHeader,
   BaseSubheader,
