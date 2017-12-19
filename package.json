@@ -28,7 +28,9 @@
     "lodash": "^4.17.4",
     "material-ui": "^0.19.4",
     "moment": "^2.18.1",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "@types/react-virtualized": "^9.7.9",
+    "react-virtualized": "^9.13.0"
   },
   "dependencies": {}
 }
