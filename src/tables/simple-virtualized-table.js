@@ -17,7 +17,6 @@ class SimpleVirtualizedTable extends Component {
       sortedList,
     };
   }
-
   getSortBy = () => {
     return this.props.sortBy ? this.props.sortBy : this.props.columns[0].key;
   }
