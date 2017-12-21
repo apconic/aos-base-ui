@@ -3,7 +3,7 @@ import { Column, Table, AutoSizer, SortDirection } from 'react-virtualized';
 import { Panel } from 'aos-base-ui';
 import _ from 'lodash';
 import 'react-virtualized/styles.css';
-import '../table.css';
+import './table.css';
 
 class SimpleVirtualizedTable extends Component {
   constructor(props) {
