@@ -1,10 +1,11 @@
 {
   "name": "aos-base-ui",
-  "version": "1.6.0",
+  "version": "1.9.4",
   "description": "Some extra components built using material-ui",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel -d lib/ src/",
+    "build":
+      "rimraf lib && babel -d lib/ src/ && cp src/tables/table.css lib/tables/.",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,10 +14,11 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "rimraf": "^2.6.2"
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,8 @@
     "material-ui": "^0.19.4",
     "moment": "^2.18.1",
     "prop-types": "^15.6.0",
-    "@types/react-virtualized": "^9.7.9",
-    "react-virtualized": "^9.13.0"
+    "@types/react-virtualized": "^9.7.10",
+    "react-virtualized": "^9.16.1"
   },
   "dependencies": {}
 }
