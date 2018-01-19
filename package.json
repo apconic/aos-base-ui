@@ -1,6 +1,6 @@
 {
   "name": "aos-base-ui",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "description": "Some extra components built using material-ui",
   "main": "lib/index.js",
   "scripts": {
