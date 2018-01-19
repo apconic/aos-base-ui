@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Column, Table, AutoSizer, SortDirection } from "react-virtualized";
 import { Panel } from "aos-base-ui";
-import _ from "lodash";
+import { cloneDeep, set } from "lodash";
 import "react-virtualized/styles.css";
 import "./table.css";
 import moment from 'moment';
@@ -38,16 +38,12 @@ class SimpleVirtualizedTable extends Component {
 
   getData = (list, index) => {
     const { columns } = this.props;
-    const dateTypeColumns = [];
+    const row = cloneDeep(list[index]);
     columns.forEach(element => {
       if (element.type === 'date') {
-        dateTypeColumns.push(element.key);
+        set(row, element.key, moment(row[element.key]).format('MMMM Do YYYY, h:mm:ss a'));
       }
     });
-    const row = _.cloneDeep(list[index]);
-    dateTypeColumns.forEach(columnName => {
-      _.set(row, columnName, moment(row[columnName]).format('MMMM Do YYYY, h:mm:ss a'));
-    })
     return row;
   };
 
