@@ -4,15 +4,16 @@ import { Panel } from "aos-base-ui";
 import _ from "lodash";
 import "react-virtualized/styles.css";
 import "./table.css";
+import moment from 'moment';
 
 class SimpleVirtualizedTable extends Component {
   constructor(props) {
     super(props);
     const sortBy = this.getSortBy();
-    const sortDirection = SortDirection.ASC;
+    const sortDirection = this.getSortDirection();
     const sortedList = this.sortList({
       sortBy,
-      sortDirection: SortDirection.ASC
+      sortDirection
     });
     this.state = {
       sortBy,
@@ -27,11 +28,28 @@ class SimpleVirtualizedTable extends Component {
     this.setState({ sortedList });
   }
 
+  getSortDirection = () => {
+    return this.props.sortDirection ? ((this.props.sortDirection === 'ASC') ? SortDirection.ASC : SortDirection.DESC) : SortDirection.ASC;
+  }
+
   getSortBy = () => {
     return this.props.sortBy ? this.props.sortBy : this.props.columns[0].key;
   };
 
-  getData = (list, index) => list[index];
+  getData = (list, index) => {
+    const { columns } = this.props;
+    const dateTypeColumns = [];
+    columns.forEach(element => {
+      if (element.type === 'date') {
+        dateTypeColumns.push(element.key);
+      }
+    });
+    const row = _.cloneDeep(list[index]);
+    dateTypeColumns.forEach(columnName => {
+      _.set(row, columnName, moment(row[columnName]).format('MMMM Do YYYY, h:mm:ss a'));
+    })
+    return row;
+  };
 
   sort = ({ sortBy, sortDirection }) => {
     const { list } = this.props;
