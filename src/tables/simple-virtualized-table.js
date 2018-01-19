@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Column, Table, AutoSizer, SortDirection } from "react-virtualized";
 import { Panel } from "aos-base-ui";
-import { cloneDeep, set } from "lodash";
+import { cloneDeep, set, orderBy } from "lodash";
 import "react-virtualized/styles.css";
 import "./table.css";
 import moment from 'moment';
@@ -57,8 +57,8 @@ class SimpleVirtualizedTable extends Component {
     let sortedList = [];
     sortedList =
       sortDirection === SortDirection.ASC
-        ? _.orderBy(list, [sortBy], ["asc"])
-        : _.orderBy(list, [sortBy], ["desc"]);
+        ? orderBy(list, [sortBy], ["asc"])
+        : orderBy(list, [sortBy], ["desc"]);
     return sortedList;
   };
 
