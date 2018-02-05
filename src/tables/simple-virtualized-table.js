@@ -80,13 +80,8 @@ class SimpleVirtualizedTable extends Component {
     const { columns, onRowClick, actions } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
     const cellRender = ({
-      cellData,
       columnData,
-      columnIndex,
-      dataKey,
-      isScrolling,
       rowData,
-      rowIndex,
     }) => {
       return(
         <a
