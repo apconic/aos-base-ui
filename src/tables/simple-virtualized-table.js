@@ -47,6 +47,10 @@ class SimpleVirtualizedTable extends Component {
     return row;
   };
 
+  getColumnWidth = (type) => {
+    return type ? 300 : 150;
+  }
+
   sort = ({ sortBy, sortDirection }) => {
     const { list } = this.props;
     const sortedList = this.sortList({ sortBy, sortDirection }, list);
@@ -73,8 +77,19 @@ class SimpleVirtualizedTable extends Component {
 
   render() {
     const { sortBy, sortDirection, sortedList } = this.state;
-    const { columns } = this.props;
+    const { columns, actions } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
+    const cellRender = ({
+      columnData,
+      rowData,
+    }) => {
+      return(
+        <a style={{ color: 'blue', textDecorationLine: 'underline'}}
+        onClick={columnData.onClick(rowData)}>
+        {columnData.text}
+        </a>
+     )
+    }
     return (
       <div>
         <div className="row">
@@ -100,11 +115,20 @@ class SimpleVirtualizedTable extends Component {
                       <Column
                         label={element.label}
                         dataKey={element.key}
-                        width={250}
+                        width={this.getColumnWidth(element.type)}
                         flexGrow={1}
                         className="exampleColumn"
                       />
                     ))}
+                    {actions ? actions.map(element =>
+                      <Column 
+                      width={100}
+                      cellRenderer={cellRender}
+                      action={element}
+                      columnData={element}
+                      className="exampleColumn"
+                      />
+                    ) : null}
                   </Table>
                 )}
               </AutoSizer>
