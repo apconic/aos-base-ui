@@ -77,7 +77,7 @@ class SimpleVirtualizedTable extends Component {
 
   render() {
     const { sortBy, sortDirection, sortedList } = this.state;
-    const { columns, onRowClick, actions } = this.props;
+    const { columns, actions } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
     const cellRender = ({
       columnData,
