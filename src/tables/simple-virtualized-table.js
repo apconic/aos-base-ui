@@ -84,7 +84,7 @@ class SimpleVirtualizedTable extends Component {
       rowData,
     }) => {
       return(
-        <a
+        <a style={{ color: 'blue', textDecorationLine: 'underline'}}
         onClick={columnData.onClick(rowData)}>
         {columnData.text}
         </a>
@@ -122,7 +122,7 @@ class SimpleVirtualizedTable extends Component {
                     ))}
                     {actions ? actions.map(element =>
                       <Column 
-                      width={50}
+                      width={100}
                       cellRenderer={cellRender}
                       action={element}
                       columnData={element}
