@@ -41,7 +41,7 @@ class SimpleVirtualizedTable extends Component {
     const row = cloneDeep(list[index]);
     columns.forEach(element => {
       if (element.type === 'date') {
-        set(row, element.key, moment(row[element.key]).format('MMMM Do YYYY, h:mm:ss a'));
+        set(row, element.key, moment(row[element.key]).format('MM/DD/YYYY HH:mm:ss'));
       }
     });
     return row;
@@ -79,7 +79,7 @@ class SimpleVirtualizedTable extends Component {
     const { sortBy, sortDirection, sortedList } = this.state;
     const { columns, actions } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
-    const cellRender = ({
+    const actionCellRender = ({
       columnData,
       rowData,
     }) => {
@@ -89,6 +89,25 @@ class SimpleVirtualizedTable extends Component {
         {columnData.text}
         </a>
      )
+    }
+
+    const cellRender = ({
+      cellData,
+      columnData,
+      rowData,
+    }) => {
+      const { action } = this.props;
+      if (columnData.onClick) {
+        return(
+          <a style={{ color: 'blue', textDecorationLine: 'underline'}}
+            onClick={columnData.onClick(rowData)}>
+            {cellData}
+          </a>
+        )
+      }
+      return(
+        <div> {cellData} </div>
+      )
     }
     return (
       <div>
@@ -118,12 +137,14 @@ class SimpleVirtualizedTable extends Component {
                         width={this.getColumnWidth(element.type)}
                         flexGrow={1}
                         className="exampleColumn"
+                        columnData={element}
+                        cellRenderer={cellRender}
                       />
                     ))}
                     {actions ? actions.map(element =>
                       <Column 
                       width={100}
-                      cellRenderer={cellRender}
+                      cellRenderer={actionCellRender}
                       action={element}
                       columnData={element}
                       className="exampleColumn"
