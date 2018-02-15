@@ -41,7 +41,7 @@ class SimpleVirtualizedTable extends Component {
     const row = cloneDeep(list[index]);
     columns.forEach(element => {
       if (element.type === 'date') {
-        set(row, element.key, moment(row[element.key]).format('MM/DD/YYYY HH:mm:ss'));
+        set(row, element.key, moment(row[element.key]).format('DD/MM/YYYY HH:mm:ss'));
       }
     });
     return row;
