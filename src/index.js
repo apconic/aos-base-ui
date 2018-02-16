@@ -16,6 +16,10 @@ import Shortlist from './shortlist';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import withAuth from './composers/withAuth';
+import { BaseCard,
+  BaseCardActions,
+  BaseCardHeader,
+  BaseCardText } from './card';
 
 export {
   EditTable,
@@ -35,4 +39,8 @@ export {
   SimpleGridList,
   SimpleGridTile,
   withAuth,
+  BaseCard,
+  BaseCardActions,
+  BaseCardHeader,
+  BaseCardText
 }
