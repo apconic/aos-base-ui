@@ -20,6 +20,7 @@ import { BaseCard,
   BaseCardActions,
   BaseCardHeader,
   BaseCardText } from './card';
+import BaseDialog from './base-dialog';
 
 export {
   EditTable,
@@ -42,5 +43,6 @@ export {
   BaseCard,
   BaseCardActions,
   BaseCardHeader,
-  BaseCardText
+  BaseCardText,
+  BaseDialog
 }
