@@ -11,10 +11,11 @@ class SimpleVirtualizedTable extends Component {
     super(props);
     const sortBy = this.getSortBy();
     const sortDirection = this.getSortDirection();
-    const sortedList = this.sortList({
+    const sortedList = this.props.sort ? this.sortList({
       sortBy,
-      sortDirection
-    });
+      sortDirection,
+      list: this.props.list
+    }) : this.props.list;
     this.state = {
       sortBy,
       sortDirection,
@@ -24,7 +25,7 @@ class SimpleVirtualizedTable extends Component {
 
   componentWillReceiveProps(newProps) {
     const { sortBy, sortDirection } = this.state;
-    const sortedList = this.sortList({ sortBy, sortDirection }, newProps.list);
+    const sortedList = newProps.sort ? this.sortList({ sortBy, sortDirection, list: newProps.list }) : newProps.list;
     this.setState({ sortedList });
   }
 
@@ -53,11 +54,11 @@ class SimpleVirtualizedTable extends Component {
 
   sort = ({ sortBy, sortDirection }) => {
     const { list } = this.props;
-    const sortedList = this.sortList({ sortBy, sortDirection }, list);
+    const sortedList = this.sortList({ sortBy, sortDirection, list });
     this.setState({ sortedList, sortDirection, sortBy });
   };
 
-  sortList = ({ sortBy, sortDirection }, list) => {
+  sortList = ({ sortBy, sortDirection, list }) => {
     let sortedList = [];
     sortedList =
       sortDirection === SortDirection.ASC
@@ -77,7 +78,7 @@ class SimpleVirtualizedTable extends Component {
 
   render() {
     const { sortBy, sortDirection, sortedList } = this.state;
-    const { columns, actions } = this.props;
+    const { columns, actions, sort } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
     const actionCellRender = ({
       columnData,
@@ -96,11 +97,10 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
-      const { action } = this.props;
       if (columnData.onClick) {
         return(
           <a style={{ color: 'blue', textDecorationLine: 'underline'}}
-            onClick={columnData.onClick(rowData)}>
+          onClick={columnData.onClick(rowData)}>
             {cellData}
           </a>
         )
@@ -121,7 +121,7 @@ class SimpleVirtualizedTable extends Component {
                     height={350}
                     headerHeight={30}
                     rowHeight={30}
-                    sort={this.sort}
+                    sort={sort ? this.sort : null}
                     sortBy={sortBy}
                     sortDirection={sortDirection}
                     rowCount={this.props.list.length}
@@ -130,7 +130,7 @@ class SimpleVirtualizedTable extends Component {
                     headerClassName="headerColumn"
                     rowClassName={this.rowClassName}
                   >
-                    {columns.map(element => (
+                    {columns ? columns.map(element => (
                       <Column
                         label={element.label}
                         dataKey={element.key}
@@ -140,7 +140,7 @@ class SimpleVirtualizedTable extends Component {
                         columnData={element}
                         cellRenderer={cellRender}
                       />
-                    ))}
+                    )) : null}
                     {actions ? actions.map(element =>
                       <Column 
                       width={100}
