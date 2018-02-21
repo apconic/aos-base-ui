@@ -9,7 +9,7 @@ import moment from 'moment';
 class SimpleVirtualizedTable extends Component {
   constructor(props) {
     super(props);
-    const sortBy = this.getSortBy();
+    const sortBy = this.props.sort ? this.getSortBy() : null;
     const sortDirection = this.getSortDirection();
     const sortedList = this.props.sort ? this.sortList({
       sortBy,
