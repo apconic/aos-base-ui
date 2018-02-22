@@ -42,7 +42,9 @@ class SimpleVirtualizedTable extends Component {
     const row = cloneDeep(list[index]);
     columns.forEach(element => {
       if (element.type === 'date') {
-        set(row, element.key, moment(row[element.key]).format('DD/MM/YYYY HH:mm:ss'));
+        if(row[element.key]) {
+          set(row, element.key, moment(row[element.key]).format('DD/MM/YYYY HH:mm:ss'));
+        }
       }
     });
     return row;
@@ -84,12 +86,15 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
-      return(
-        <a style={{ color: 'blue', textDecorationLine: 'underline'}}
-        onClick={columnData.onClick(rowData)}>
-        {columnData.text}
-        </a>
-     )
+      if (cellData !== null) {
+        return(
+          <a style={{ color: 'blue', textDecorationLine: 'underline'}}
+          onClick={columnData.onClick(rowData)}>
+          {columnData.text}
+          </a>
+       )
+      }
+      return <div />;
     }
 
     const cellRender = ({
@@ -97,17 +102,20 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
-      if (columnData.onClick) {
+      if (cellData !== null) {
+        if (columnData.onClick) {
+          return(
+            <a style={{ color: 'blue', textDecorationLine: 'underline'}}
+            onClick={columnData.onClick(rowData)}>
+              {cellData}
+            </a>
+          )
+        }
         return(
-          <a style={{ color: 'blue', textDecorationLine: 'underline'}}
-          onClick={columnData.onClick(rowData)}>
-            {cellData}
-          </a>
+          <div> {cellData} </div>
         )
       }
-      return(
-        <div> {cellData} </div>
-      )
+      return <div />;
     }
     return (
       <div>
