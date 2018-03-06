@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Column, Table, AutoSizer, SortDirection } from "react-virtualized";
 import { Panel } from "aos-base-ui";
-import { cloneDeep, set, orderBy } from "lodash";
+import { cloneDeep, set, orderBy, isNumber } from "lodash";
 import "react-virtualized/styles.css";
+import { indigo900 } from 'material-ui/styles/colors';
 import "./table.css";
 import moment from 'moment';
 
@@ -50,8 +51,8 @@ class SimpleVirtualizedTable extends Component {
     return row;
   };
 
-  getColumnWidth = (type) => {
-    return type ? 300 : 150;
+  getColumnWidth = (width, totalWidth) => {
+    return width ? ((totalWidth * width)/100) : 150;
   }
 
   sort = ({ sortBy, sortDirection }) => {
@@ -88,7 +89,7 @@ class SimpleVirtualizedTable extends Component {
     }) => {
       if (cellData !== null) {
         return(
-          <a style={{ color: 'blue', textDecorationLine: 'underline'}}
+          <a style={{ color: indigo900, textDecorationLine: 'underline'}}
           onClick={columnData.onClick(rowData)}>
           {columnData.text}
           </a>
@@ -102,17 +103,20 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
+      const style = isNumber(cellData) ? { float: 'right' } : { float: 'left' };
       if (cellData !== null) {
         if (columnData.onClick) {
           return(
-            <a style={{ color: 'blue', textDecorationLine: 'underline'}}
-            onClick={columnData.onClick(rowData)}>
-              {cellData}
-            </a>
+            <div style={style}>
+              <a style={{ color: indigo900, textDecorationLine: 'underline'}}
+              onClick={columnData.onClick(rowData)}>
+                {cellData}
+              </a>
+            </div>
           )
         }
         return(
-          <div> {cellData} </div>
+          <div style={style}> {cellData} </div>
         )
       }
       return <div />;
@@ -142,7 +146,7 @@ class SimpleVirtualizedTable extends Component {
                       <Column
                         label={element.label}
                         dataKey={element.key}
-                        width={this.getColumnWidth(element.type)}
+                        width={this.getColumnWidth(element.width, width)}
                         flexGrow={1}
                         className="exampleColumn"
                         columnData={element}
