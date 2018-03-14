@@ -16,10 +16,7 @@ import Shortlist from './shortlist';
 import SimpleGridList from './simple-grid-list';
 import SimpleGridTile from './simple-grid-tile';
 import withAuth from './composers/withAuth';
-import { BaseCard,
-  BaseCardActions,
-  BaseCardHeader,
-  BaseCardText } from './card';
+import ExpandableCard from './card';
 import BaseDialog from './base-dialog';
 
 export {
@@ -40,9 +37,6 @@ export {
   SimpleGridList,
   SimpleGridTile,
   withAuth,
-  BaseCard,
-  BaseCardActions,
-  BaseCardHeader,
-  BaseCardText,
+  ExpandableCard,
   BaseDialog
 }
