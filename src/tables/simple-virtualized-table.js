@@ -103,11 +103,10 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
-      const style = isNumber(cellData) ? { float: 'right' } : { float: 'left' };
       if (cellData !== null) {
         if (columnData.onClick) {
           return(
-            <div style={style}>
+            <div>
               <a style={{ color: indigo900, textDecorationLine: 'underline'}}
               onClick={columnData.onClick(rowData)}>
                 {cellData}
@@ -116,7 +115,7 @@ class SimpleVirtualizedTable extends Component {
           )
         }
         return(
-          <div style={style}> {cellData} </div>
+          <div> {cellData} </div>
         )
       }
       return <div />;
