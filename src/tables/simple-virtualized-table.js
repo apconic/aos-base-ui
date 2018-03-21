@@ -98,15 +98,36 @@ class SimpleVirtualizedTable extends Component {
       return <div />;
     }
 
+    const headerRowRenderer = ({
+      className,
+      columns,
+      style
+    }) =>  {
+        const customStyle = {
+          ...style,
+          textAlign: 'center'
+        };
+        return (
+        <div
+          className={className}
+          role='row'
+          style={customStyle}
+        >
+          {columns}
+        </div>
+      );
+    } 
+
     const cellRender = ({
       cellData,
       columnData,
       rowData,
     }) => {
+      const style = isNumber(cellData) ? { textAlign: 'right', marginRight: 8 } : { textAlign: 'left' };
       if (cellData !== null) {
         if (columnData.onClick) {
           return(
-            <div>
+            <div style={style}>
               <a style={{ color: indigo900, textDecorationLine: 'underline'}}
               onClick={columnData.onClick(rowData)}>
                 {cellData}
@@ -115,7 +136,7 @@ class SimpleVirtualizedTable extends Component {
           )
         }
         return(
-          <div> {cellData} </div>
+          <div style={style}> {cellData} </div>
         )
       }
       return <div />;
@@ -138,6 +159,7 @@ class SimpleVirtualizedTable extends Component {
                     rowCount={this.props.list.length}
                     rowGetter={rowGetter}
                     noRowsRenderer={this.noRowsRenderer}
+                    headerRowRenderer={headerRowRenderer}
                     headerClassName="headerColumn"
                     rowClassName={this.rowClassName}
                   >
