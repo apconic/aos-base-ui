@@ -105,7 +105,6 @@ class SimpleVirtualizedTable extends Component {
     }) =>  {
         const customStyle = {
           ...style,
-          textAlign: 'center'
         };
         return (
         <div
@@ -123,11 +122,10 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
-      const style = isNumber(cellData) ? { textAlign: 'right', marginRight: 8 } : { textAlign: 'left' };
       if (cellData !== null) {
         if (columnData.onClick) {
           return(
-            <div style={style}>
+            <div>
               <a style={{ color: indigo900, textDecorationLine: 'underline'}}
               onClick={columnData.onClick(rowData)}>
                 {cellData}
@@ -136,7 +134,7 @@ class SimpleVirtualizedTable extends Component {
           )
         }
         return(
-          <div style={style}> {cellData} </div>
+          <div> {cellData} </div>
         )
       }
       return <div />;
