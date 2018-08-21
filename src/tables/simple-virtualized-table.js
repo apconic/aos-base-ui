@@ -4,6 +4,7 @@ import { Panel } from "aos-base-ui";
 import { cloneDeep, set, orderBy, isNumber } from "lodash";
 import "react-virtualized/styles.css";
 import { indigo900 } from 'material-ui/styles/colors';
+import IconButton from 'material-ui/IconButton';
 import "./table.css";
 import moment from 'moment';
 
@@ -122,10 +123,11 @@ class SimpleVirtualizedTable extends Component {
       columnData,
       rowData,
     }) => {
+      const style = (columnData.number) ? { textAlign: 'right', marginRight: 8 } : { textAlign: 'left' };
       if (cellData !== null) {
         if (columnData.onClick) {
           return(
-            <div>
+            <div style={style}>
               <a style={{ color: indigo900, textDecorationLine: 'underline'}}
               onClick={columnData.onClick(rowData)}>
                 {cellData}
@@ -134,10 +136,51 @@ class SimpleVirtualizedTable extends Component {
           )
         }
         return(
-          <div> {cellData} </div>
+          <div style={style}> {cellData} </div>
         )
       }
       return <div />;
+    }
+
+    const headerRenderer = ({
+      columnData,
+      dataKey,
+      disableSort,
+      label,
+      sortBy,
+      sortDirection
+    }) => {
+      function getIcon () {
+        if (dataKey === sortBy) {
+          if (sortDirection === 'ASC') {
+            return (<IconButton
+              iconClassName="material-icons"
+              disabled
+            >arrow_drop_up
+            </IconButton>);
+          } else {
+            return (
+              <IconButton
+            iconClassName="material-icons"
+            disabled
+          >arrow_drop_down
+          </IconButton>
+            );
+          }
+        }
+        return (<div />)
+      }
+      const style = (columnData.number) ? { float: 'right', marginRight: 8 } : { float: 'left' };
+      return (
+        <div key={dataKey} style={style}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span>
+              {label}
+            </span>
+            {getIcon()}
+          </div>
+        </div>
+      );
     }
     return (
       <div>
@@ -170,6 +213,7 @@ class SimpleVirtualizedTable extends Component {
                         className="exampleColumn"
                         columnData={element}
                         cellRenderer={cellRender}
+                        headerRenderer={headerRenderer}
                       />
                     )) : null}
                     {actions ? actions.map(element =>
@@ -179,6 +223,7 @@ class SimpleVirtualizedTable extends Component {
                       action={element}
                       columnData={element}
                       className="exampleColumn"
+                      headerRenderer={headerRenderer}
                       />
                     ) : null}
                   </Table>
