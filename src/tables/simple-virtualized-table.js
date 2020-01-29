@@ -84,21 +84,6 @@ class SimpleVirtualizedTable extends Component {
     const { sortBy, sortDirection, sortedList } = this.state;
     const { columns, actions, sort } = this.props;
     const rowGetter = ({ index }) => this.getData(sortedList, index);
-    const actionCellRender = ({
-      columnData,
-      rowData,
-    }) => {
-      if (cellData !== null) {
-        return(
-          <a style={{ color: indigo900, textDecorationLine: 'underline'}}
-          onClick={columnData.onClick(rowData)}>
-          {columnData.text}
-          </a>
-       )
-      }
-      return <div />;
-    }
-
     const headerRowRenderer = ({
       className,
       columns,
@@ -216,15 +201,23 @@ class SimpleVirtualizedTable extends Component {
                         headerRenderer={headerRenderer}
                       />
                     )) : null}
-                    {actions ? actions.map(element =>
-                      <Column 
-                      width={100}
-                      cellRenderer={actionCellRender}
-                      action={element}
-                      columnData={element}
-                      className="exampleColumn"
-                      headerRenderer={headerRenderer}
-                      />
+                    {actions ? actions.map(element =>(
+                      <Column
+                        width={100}
+                        dataKey={element.key}
+                        cellRenderer={({
+                          rowData,
+                        }) => (
+                          <IconButton
+                            iconClassName="material-icons"
+                            onClick={() => element.onClick(rowData)}
+                          >
+                          {element.icon}
+                          </IconButton>)}
+                        columnData={element}
+                        className="exampleColumn"
+                        headerRenderer={() => <span>{element.actionName}</span>}
+                      />)
                     ) : null}
                   </Table>
                 )}
